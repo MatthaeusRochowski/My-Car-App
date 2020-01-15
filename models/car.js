@@ -45,7 +45,7 @@ const carSchema = new Schema({
     typ:                      { type: String }, //VK, TK, HF
     abschluss_jahr:           { type: Number }, //2020 (initial insurance abschluss_monat = erstzulassung_monat)
     abschluss_kilometerstand: { type: Number }, //12000
-    geschätzte_laufleistung:  { type: Number }, //10000
+    geschaetzte_laufleistung: { type: Number }, //10000
     versicherungskosten_jahr: { type: Number }, //600
     schadensfreiheitsklasse:  { type: Number }  //18 (belongs to user and insurer)
   }],
