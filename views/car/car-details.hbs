@@ -1,0 +1,96 @@
+<h1>Fahrzeug Details</h1>
+
+<h2>Fahrzeug Daten</h2>
+<div>
+  <form action="car/edit/:id">
+    <div>
+      <label for="kennzeichen">Kennzeichen:</label>
+      <input type="text" name="kennzeichen" id="kennzeichen" value="{{ car.kennzeichen }}">
+    </div>
+    <div>
+      <label for="hersteller">Hersteller:</label>
+      <input type="text" name="hersteller" id="hersteller" value="{{ car.hersteller }}">
+    </div>
+    <div>
+      <label for="modell">Modell:</label>
+      <input type="text" name="modell" id="modell" value="{{ car.modell }}">
+    </div>
+    <div>
+      <label for="hsn">HSN:</label>
+      <input type="text" name="hsn" id="hsn" value="{{ car.hsn }}">
+    </div>
+    <div>
+      <label for="tsn">TSN:</label>
+      <input type="text" name="tsn" id="tsn" value="{{ car.tsn }}">
+    </div>
+    <div>
+      <label for="kraftstoff">Kraftstoff:</label>
+      <input type="text" name="kraftstoff" id="kraftstoff" value="{{ car.kraftstoff }}">
+    </div>
+    <div>
+      <label for="leistung_ps">Leistung in PS:</label>
+      <input type="text" name="leistung_ps" id="leistung_ps" value="{{ car.leistung_ps }}">
+    </div>
+    <div>
+      <label for="erstzulassung">Kaufpreis:</label>
+      <input type="text" name="erstzulassung" id="erstzulassung" value="{{ car.erstzulassung_monat }}/{{ car.erstzulassung_jahr }}">
+    </div>
+    <div>
+      <label for="kaufpreis">Kaufpreis:</label>
+      <input type="text" name="kaufpreis" id="kaufpreis" value="{{ car.kaufpreis }}">
+    </div>
+    <div>
+      <label for="kilometerstand_kauf">Kilometerstand bei Kauf:</label>
+      <input type="text" name="kilometerstand_kauf" id="kilometerstand_kauf" value="{{ car.kilometerstand_kauf }}">
+    </div>
+    <div>
+      <label for="kilometerstand_aktuell">aktueller Kilometerstand:</label>
+      <input type="text" name="kilometerstand_aktuell" id="kilometerstand_aktuell" value="{{ car.kilometerstand_aktuell }}">
+    </div>
+  </form>
+</div>
+
+<h2>Fahrtenbuch</h2>
+<div>
+
+  {{#each car.fahrtenbuch}}
+   {{> log-partial }}
+  {{/each}}
+
+</div>
+
+<h2>Tankbuch</h2>
+<div>
+
+  {{#each car.tankbuch}}
+   {{> fuel-partial }}
+  {{/each}}
+
+</div>
+
+<h2>Werkstatt Buch</h2>
+<div>
+
+  {{#each car.werkstattbuch}}
+   {{> service-partial }}
+  {{/each}}
+
+</div>
+
+<h2>Versicherung</h2>
+<div>
+
+  {{#each car.versicherungsbuch}}
+   {{> insurance-partial }}
+  {{/each}}
+
+</div>
+
+<h2>Kfz-Steuer</h2>
+<div>
+
+  {{#each car.steuerbuch}}
+   {{> tax-partial }}
+  {{/each}}
+
+</div>
