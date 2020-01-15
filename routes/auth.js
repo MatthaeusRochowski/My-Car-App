@@ -63,7 +63,7 @@ router.post('/login', (req, res, next) => {
           return res.render('/', {errorMessage: "Passwort ist falsch"});
       
       req.session.user = foundUser;
-      res.redirect('/home');
+      res.render('auth/home');
       });
   })
   .catch(err => next (err));
