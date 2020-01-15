@@ -18,6 +18,7 @@ const carSchema = new Schema({
   kfz_steuer: { type: Number }, //150
   
   fahrtenbuch: [{
+    datum:                { type: Number }, //20201231
     strecke_km:           { type: Number }, //50 (will be calculated kilometerstandende - kilometerstand_start)
     startort:             { type: String }, //zuhause
     zielort:              { type: String }, //arbeit
@@ -26,6 +27,7 @@ const carSchema = new Schema({
   }],
 
   tankbuch: [{
+    datum:          { type: Number }, //20201231
     kilometerstand: { type: Number }, //12025
     liter:          { type: Number }, //35
     literpreis:     { type: Number }, //1.4
@@ -33,6 +35,7 @@ const carSchema = new Schema({
   }], 
 
   werkstattbuch: [{
+    datum:           { type: Number }, //20201231
     kilometerstand:  { type: Number }, //12040
     reparaturposten: { type: String }, //Keilriemen
     reparaturpreis:  { type: Number }, //230
