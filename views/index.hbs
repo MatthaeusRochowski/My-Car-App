@@ -1,2 +1,55 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<h1>Welcome to My-Car-App</h1>
+<!--- ABOUT APP -->
+
+<section>
+ <div>
+   Beschreibung My-Car-App
+ </div>
+</section>
+
+<!--- SIGN UP -->
+
+<section>
+  <form action="/signup" method="POST" id="form_signup">
+<h2>Registrieren</h2>
+    
+    <input type="email" name="email" placeholder="E-Mail-Adresse" ><br>
+
+    
+    <input type="password" name="password" placeholder="**********" ><br>
+
+    
+    <input type="text" name="username" placeholder="Nutzername" ><br>
+
+{{#if message}}
+    <div class="error-message">{{ message }}</div>
+  {{/if}}
+
+    <button type="submit">Account erstellen</button><br>
+  </form>
+  
+</section>
+
+<!--- LOGIN -->
+
+<section>
+<form action="/login" method="POST" id="form_login">
+  <h2>Anmelden</h2>
+
+  
+  <input type="email" name="email" placeholder="E-Mail-Adresse" required><br>
+
+  
+  <input type="password" name="password" placeholder="**********" required><br>
+
+  {{#if errorMessage }}
+    <div class="error-message">{{ errorMessage }}</div><br>
+  {{/if}}
+
+  <button>Login</button><br>
+
+  <p class="account-message">
+    Sie haben noch keinen Account? <a href="/signup">Hier klicken zum Registrieren</a>
+  </p>
+</form>
+</section>
