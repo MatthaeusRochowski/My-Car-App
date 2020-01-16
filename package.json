@@ -6,7 +6,6 @@
     "start": "node ./bin/www",
     "dev": "DEBUG=my-car-app:* nodemon ./bin/www",
     "dev-windows": "nodemon ./bin/www",
-    "seed": "node ./bin/car-seed.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
