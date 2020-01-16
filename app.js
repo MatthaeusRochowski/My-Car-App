@@ -15,7 +15,7 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 
 mongoose
-  .connect("mongodb://localhost/my-car-app", { useNewUrlParser: true })
+  .connect(process.env.MONGODB_URI || "mongodb://localhost/my-car-app", { useNewUrlParser: true })
   .then(x => {
     console.log(
       `Connected to Mongo! Database name: "${x.connections[0].name}"`
@@ -83,5 +83,6 @@ const service = require("./routes/service");
 app.use("/myaccount/service", service);
 const insurance = require("./routes/insurance");
 app.use("/myaccount/insurance", insurance);
+
 
 module.exports = app;

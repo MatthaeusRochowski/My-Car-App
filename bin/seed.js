@@ -1,10 +1,12 @@
 const bcrypt = require("bcryptjs");
 const mongoose = require('mongoose');
+const Schema   = mongoose.Schema;
 const User = require('../models/user');
 const Car = require('../models/car');
 
 const dbName = 'my-car-app'; //check name
-mongoose.connect(`mongodb://localhost/${dbName}`);  
+mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost/${dbName}`);  
+
 
 //USER Seed
 let seedUser = 
@@ -102,6 +104,5 @@ User.findOne({ 'username': seedUser.username })
     }
     else {
       console.log('User: ' + seedUser.username + 'is already present in DB.');
-      
     }
   });
