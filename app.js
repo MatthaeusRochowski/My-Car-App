@@ -75,13 +75,13 @@ const index = require("./routes/index");
 app.use("/", index);
 const auth = require("./routes/auth");
 app.use("/", auth);
-const car = require("./routes/car");
-app.use("/car", car);
+const myAccount = require("./routes/myaccount");
+app.use("/", myAccount);
 const logbook = require("./routes/logbook");
-app.use("/car/logbook", logbook);
+app.use("/myaccount/logbook", logbook);
 const service = require("./routes/service");
-app.use("/car/service", service);
+app.use("/myaccount/service", service);
 const insurance = require("./routes/insurance");
-app.use("/car/insurance", insurance);
+app.use("/myaccount/insurance", insurance);
 
 module.exports = app;
