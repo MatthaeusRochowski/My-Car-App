@@ -1,0 +1,57 @@
+{
+  "kennzeichen": "IN-A1234",   
+  "hersteller": "Honda",
+  "modell": "Civic",
+  "hsn": "7100",
+  "tsn": "ADO",
+  "kraftstoff": "Benzin",
+  "leistung_ps": 320,
+  "erstzulassung_monat": 1,
+  "erstzulassung_jahr": 2019,
+  "kaufpreis": 29900,
+  "kilometerstand_kauf": 9324,
+  "kilometerstand_aktuell": 9399,
+
+  "fahrtenbuch": [{
+    "datum": 20200116,
+    "strecke_km": 75,
+    "startort": "Händler",
+    "zielort": "Werkstatt",
+    "kilometerstand_start": 9324,
+    "kilometerstand_ende": 9399
+  }],
+
+  "tankbuch": [{
+    "datum": 20200116,
+    "kilometerstand": 9325,
+    "liter": 35,
+    "literpreis": 1.4,
+    "betrag": 49
+  }], 
+
+  "werkstattbuch": [{
+    "datum": 20201231,
+    "kilometerstand": 9399,
+    "reparaturposten": "Durchsicht",
+    "betrag": 129.00,
+    "rechnungs_url": ""
+  }],
+
+  "versicherungsbuch": [{
+    "name": "R+V",
+    "typ": "TK",
+    "abschluss_jahr": 2020,
+    "abschluss_kilometerstand": 9325,
+    "geschaetzte_laufleistung": 10000,
+    "versicherungskosten_jahr": 399.39,
+    "schadensfreiheitsklasse": 20
+  }],
+
+  "steuerbuch": [{
+    "typ": "kfz-steuer",
+    "jahr": 2020,
+    "betrag": 201.96
+  }],
+
+  "eigner_ref": "5e203b1a26700f3680f9d134"
+}
