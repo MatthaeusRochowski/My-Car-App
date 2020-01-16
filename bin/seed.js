@@ -102,5 +102,6 @@ User.findOne({ 'username': seedUser.username })
     }
     else {
       console.log('User: ' + seedUser.username + 'is already present in DB.');
+      
     }
   });

@@ -25,18 +25,6 @@ mongoose
     console.error("Error connecting to mongo", err);
   });
 
-//add dummy car to DB
-//const Car = require('./models/car');
-//let seedCar = require('./bin/car.json');
-//Car.findOne({ "kennzeichen": seedCar.kennzeichen })
-//  .then(foundCar => {
-//    if (foundCar === null) {
-//      Car.create(seedCar);
-//    }
-//  })
-
-//load bin/car-seed.js seeds file
-
 const app_name = require("./package.json").name;
 const debug = require("debug")(
   `${app_name}:${path.basename(__filename).split(".")[0]}`
