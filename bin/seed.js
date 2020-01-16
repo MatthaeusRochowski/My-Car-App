@@ -34,12 +34,19 @@ const car =
     "kilometerstand_aktuell": 9399,
   
     "fahrtenbuch": [{
-      "datum": 20200116,
+      "datum": 20200115,
       "strecke_km": 75,
       "startort": "Händler",
       "zielort": "Werkstatt",
       "kilometerstand_start": 9324,
       "kilometerstand_ende": 9399
+    },{
+      "datum": 20200116,
+      "strecke_km": 51,
+      "startort": "Händler",
+      "zielort": "Werkstatt",
+      "kilometerstand_start": 9399,
+      "kilometerstand_ende": 9450
     }],
   
     "tankbuch": [{

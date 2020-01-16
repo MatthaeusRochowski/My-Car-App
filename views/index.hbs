@@ -2,16 +2,14 @@
 
 <header>
         <div id="logo">
-                <a href="/views/index.hbs"><li>MyCarApp</li></a>
+                <a href="/"><li>MyCarApp</li></a>
         </div>
 
         <nav id="main-nav">
             <ul>
-                <a href="/views/index.hbs"><li>Home</li></a>
-                <a href="/views/index.hbs"><li>About</li></a>
-                <a href="/views/index.hbs"><li>Contact</li></a>
-                <a href="/views/index.hbs"><li>Login</li></a>
-                <a href="/views/index.hbs"><li>Signup</li></a>
+                <a href="#about"><li>About</li></a>
+                <a href="#login"><li>Login</li></a>
+                <a href="#signup"><li>Signup</li></a>
             </ul>
         </nav>
     </header>
@@ -19,18 +17,48 @@
 
 
 
-<h1>Welcome to My-Car-App</h1>
+
 <!--- ABOUT APP -->
 
-<section>
+<section id="about">
+  <hr>
+  <h1>Welcome to My-Car-App</h1>
  <div>
-   Beschreibung My-Car-App
+   <p>Beschreibung My-Car-App</p>
  </div>
 </section>
 
+
+<!--- LOGIN -->
+
+<section id="login">
+<form action="/login" method="POST" id="form_login">
+  <h2>Anmelden</h2>
+
+  
+  <input type="email" name="email" placeholder="E-Mail-Adresse" value="muster@web.de"><br>
+
+  
+  <input type="password" name="password" placeholder="**********" value="mustermuster"><br>
+
+  {{#if errorMessage }}
+    <div class="error-message">{{ errorMessage }}</div><br>
+  {{/if}}
+
+  <a href ="/login"><button type="submit" class="button">Login</button></a><br>
+
+  <p class="account-message">
+   <li>Sie haben noch keinen Account?</li><br>
+    
+    <a href="#signup">Hier klicken zum Registrieren</a>
+  </p>
+</form>
+</section>
+
+
 <!--- SIGN UP -->
 
-<section>
+<section id="signup">
   <form action="/signup" method="POST" id="form_signup">
 <h2>Registrieren</h2>
     
@@ -46,31 +74,8 @@
     <div class="error-message">{{ message }}</div>
   {{/if}}
 
-    <button type="submit">Account erstellen</button><br>
+    <a href="/signup"><button type="button" class="button">Account erstellen</button></a><br>
   </form>
   
 </section>
 
-<!--- LOGIN -->
-
-<section>
-<form action="/login" method="POST" id="form_login">
-  <h2>Anmelden</h2>
-
-  
-  <input type="email" name="email" placeholder="E-Mail-Adresse" value="muster@web.de"><br>
-
-  
-  <input type="password" name="password" placeholder="**********" value="mustermuster"><br>
-
-  {{#if errorMessage }}
-    <div class="error-message">{{ errorMessage }}</div><br>
-  {{/if}}
-
-  <button>Login</button><br>
-
-  <p class="account-message">
-    Sie haben noch keinen Account? <a href="/signup">Hier klicken zum Registrieren</a>
-  </p>
-</form>
-</section>
