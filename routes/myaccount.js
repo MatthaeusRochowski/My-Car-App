@@ -15,7 +15,7 @@ router.get('/myaccount/car-details/:id', loginCheck(), (req, res, next) => {
   const loggedUser = req.session.user;
   Car.findById(req.params.id)
   .then(theCar => {
-    console.log(theCar);
+    //console.log(theCar);
     res.render('car/car-details', { user: loggedUser, car: theCar } );
   });
 });
@@ -25,7 +25,7 @@ router.get('/myaccount', loginCheck(), (req, res, next) => {
   Car.find({ eigner_ref: mongoose.Types.ObjectId(loggedUser._id) })
   .populate("eigner_ref")
   .then(myCars => {
-    console.log(myCars);
+    //console.log(myCars);
     res.render('auth/myaccount', { user: loggedUser, car: myCars });
   })
   .catch(err => next(err)); 

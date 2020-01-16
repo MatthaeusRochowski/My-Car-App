@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require("mongoose");
 const router  = express.Router();
 const Car = require('../models/car');
 
@@ -13,6 +14,13 @@ const loginCheck = () => {
 
 /* prefixed with /myaccount/insurance in app.js*/
 //Add Insurance
+router.get('/add/:carId', loginCheck(), (req, res, next) => {
+  const carId = req.params.carId;
+  const loggedUser = req.session.user;
+  res.render('car/insurance-add', { user: loggedUser, carId: carId } );
+})
+
+/* prefixed with /myaccount/insurance in app.js*/
 router.post('/add/:carId', loginCheck(), (req, res, next) => {
   const carId = req.params.carId; //needed to add te insurance to the correct car
   const loggedUser = req.session.user;
@@ -36,10 +44,12 @@ router.post('/add/:carId', loginCheck(), (req, res, next) => {
     schadensfreiheitsklasse: schadensfreiheitsklasse
   }
 
-  Car.findOne({ "kennzeichen": carId })
+  Car.findById({ _id: mongoose.Types.ObjectId(carId) })
     .then(foundCar => {
       if (foundCar !== null) {
         foundCar.versicherungsbuch.push(newInsurance);
+        foundCar.save();
+        res.redirect(`/myaccount/car-details/${foundCar._id}`)
       }
     })
     .catch(err => {
