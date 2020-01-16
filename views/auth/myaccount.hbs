@@ -15,6 +15,11 @@
     </header>
 
 <a href="/car-add"><button type="submit">Fahrzeug hinzufügen</button></a>
+
+<h1>Meine Fahrzeuge</h1>
+
 {{#each this.car}}
-{{> car-partial }}
+    {{> carPartial }}
+    <br>
+    <a href="/myaccount/car-details/{{ this._id }}"><button>Fahrzeugdetails</button></a>
 {{/each}}
