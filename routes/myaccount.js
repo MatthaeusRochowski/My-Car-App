@@ -3,6 +3,7 @@ const express = require('express');
 const router  = express.Router();
 const Car = require('../models/car');
 
+
 /*  */
 const loginCheck = () => {
   return (req, res, next) => 
@@ -25,16 +26,18 @@ router.get('/car-add', loginCheck(), (req,res) => {
   res.render('car/car-add', {user: loggedUser});
 });
 
-router.post('/car-add', loginCheck(), (req, res) => {
+router.post('/car-add', loginCheck(), (req, res, next) => {
   const loggedUser = req.session.user;
+  //console.log(loggedUser);
+  const eigner_ref = loggedUser._id;
   const {kennzeichen, hersteller, modell, hsn, tsn, 
     kraftstoff, leistung_ps, erstzulassung_monat, 
     erstzulassung_jahr, kaufpreis, kilometerstand_kauf} = req.body;
 
   Car.create({kennzeichen, hersteller, modell, hsn, tsn, 
     kraftstoff, leistung_ps, erstzulassung_monat, 
-    erstzulassung_jahr, kaufpreis, kilometerstand_kauf}).then(() => {
-      res.redirect('/', {user: loggedUser});
+    erstzulassung_jahr, kaufpreis, kilometerstand_kauf, eigner_ref}).then(() => {
+      res.render('auth/myaccount', {user: loggedUser});
     })
       .catch(err => {
         next(err);
