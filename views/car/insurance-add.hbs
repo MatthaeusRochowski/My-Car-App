@@ -1,0 +1,37 @@
+<!--insurance add form - gets car as input-->
+<h1>Versicherung hinzufügen</h1>
+
+<h2>Versicherungs-Daten</h2>
+<div>
+  <form action="/myaccount/insurance/add/{{carId}}" method="POST" id="form-insurance-add">
+    <div>
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="name">
+    </div>
+    <div>
+      <label for="typ">Typ:</label>
+      <input type="text" name="typ" id="typ">
+    </div>
+    <div>
+      <label for="abschluss_jahr">Abschluss Jahr:</label>
+      <input type="text" name="abschluss_jahr" id="abschluss_jahr">
+    </div>
+    <div>
+      <label for="abschluss_kilometerstand">Abschluss Kilometerstand:</label>
+      <input type="text" name="abschluss_kilometerstand" id="abschluss_kilometerstand">
+    </div>
+    <div>
+      <label for="geschaetzte_laufleistung">Geschätzte Laufleistung:</label>
+      <input type="text" name="geschaetzte_laufleistung" id="geschaetzte_laufleistung">
+    </div>
+    <div>
+      <label for="betrag">Rechnungsbetrag:</label>
+      <input type="text" name="betrag" id="betrag">
+    </div>
+    <div>
+      <label for="schadensfreiheitsklasse">Schadensfreiheitsklasse:</label>
+      <input type="text" name="schadensfreiheitsklasse" id="schadensfreiheitsklasse">
+    </div>
+    <button type="submit">Speichern</button>   
+  </form>
+</div>
