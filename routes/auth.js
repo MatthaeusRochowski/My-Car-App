@@ -63,7 +63,7 @@ router.post('/login', (req, res, next) => {
           return res.render('/', {errorMessage: "Passwort ist falsch"});
       
       req.session.user = foundUser;
-      res.render('auth/home');
+      res.render('auth/home-private');
       });
   })
   .catch(err => next (err));
@@ -73,7 +73,14 @@ router.post('/login', (req, res, next) => {
 /****** logout ********************************/
 
 router.get('/logout', (req, res, next) => {
-  res.render('');
+  req.session.destroy(err => {
+    if (err) {
+      next(err);
+    }else {
+      res.clearCookie("connect.sid");
+      res.redirect('/');
+    }
+  });
 });
 
 
