@@ -2,6 +2,7 @@
 const express = require('express');
 const router  = express.Router();
 const Car = require('../models/car');
+const mongoose = require("mongoose");
 
 
 /*  */
@@ -10,9 +11,24 @@ const loginCheck = () => {
     (req.session.user ? next () : res.redirect('/'));
 };
 
-router.get('/myaccount', loginCheck(), (req, res) => {
+router.get('/myaccount/car-details/:id', loginCheck(), (req, res, next) => {
   const loggedUser = req.session.user;
-  res.render('auth/myaccount', { user: loggedUser});
+  Car.findById(req.params.id)
+  .then(theCar => {
+    console.log(theCar);
+    res.render('car/car-details', { user: loggedUser, car: theCar } );
+  });
+});
+
+router.get('/myaccount', loginCheck(), (req, res, next) => {
+  const loggedUser = req.session.user;
+  Car.find({ eigner_ref: mongoose.Types.ObjectId(loggedUser._id) })
+  .populate("eigner_ref")
+  .then(myCars => {
+    console.log(myCars);
+    res.render('auth/myaccount', { user: loggedUser, car: myCars });
+  })
+  .catch(err => next(err)); 
 });
 
 router.get('/home-main', loginCheck(), (req,res) => {
@@ -42,6 +58,18 @@ router.post('/car-add', loginCheck(), (req, res, next) => {
       .catch(err => {
         next(err);
       });
+});
+
+// Get my cars from DB and show in car-partial
+router.get("/myrooms", (req, res, next) => {
+  const user = req.session.currentUser;
+  Room.find({ owner: mongoose.Types.ObjectId(user._id) })
+    .populate("owner")
+    .then(allRoomsfromDB => {
+      //console.log(allRoomsfromDB);
+      res.render("rooms/myrooms", { rooms: allRoomsfromDB, user });
+    })
+    .catch(err => next(err));
 });
 
 

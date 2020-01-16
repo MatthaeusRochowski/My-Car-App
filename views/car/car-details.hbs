@@ -1,6 +1,6 @@
 <h1>Fahrzeug Details</h1>
 
-<h2>Fahrzeug Daten</h2>
+<h2>Fahrzeug Daten für {{ car.kennzeichen }} </h2>
 <div>
   <form action="car/edit/:id">
     <div>
@@ -54,7 +54,7 @@
 <div>
 
   {{#each car.fahrtenbuch}}
-   {{> log-partial }}
+   {{> logPartial }}
   {{/each}}
 
 </div>
@@ -63,7 +63,7 @@
 <div>
 
   {{#each car.tankbuch}}
-   {{> fuel-partial }}
+   {{> fuelPartial }}
   {{/each}}
 
 </div>
@@ -72,7 +72,7 @@
 <div>
 
   {{#each car.werkstattbuch}}
-   {{> service-partial }}
+   {{> servicePartial }}
   {{/each}}
 
 </div>
@@ -81,7 +81,7 @@
 <div>
 
   {{#each car.versicherungsbuch}}
-   {{> insurance-partial }}
+   {{> insurancePartial }}
   {{/each}}
 
 </div>
@@ -90,7 +90,7 @@
 <div>
 
   {{#each car.steuerbuch}}
-   {{> tax-partial }}
+   {{> taxPartial }}
   {{/each}}
 
 </div>
