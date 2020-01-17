@@ -34,14 +34,14 @@ const car =
     "kilometerstand_aktuell": 9399,
   
     "fahrtenbuch": [{
-      "datum": 20200115,
+      "datum": "2020-01-15",
       "strecke_km": 75,
       "startort": "Händler",
       "zielort": "Werkstatt",
       "kilometerstand_start": 9324,
       "kilometerstand_ende": 9399
     },{
-      "datum": 20200116,
+      "datum": "2020-01-16",
       "strecke_km": 51,
       "startort": "Händler",
       "zielort": "Werkstatt",
@@ -50,7 +50,7 @@ const car =
     }],
   
     "tankbuch": [{
-      "datum": 20200116,
+      "datum": "2020-01-16",
       "kilometerstand": 9325,
       "liter": 35,
       "literpreis": 1.4,
@@ -58,7 +58,7 @@ const car =
     }], 
   
     "werkstattbuch": [{
-      "datum": 20201231,
+      "datum": "2020-12-31",
       "kilometerstand": 9399,
       "reparaturposten": "Durchsicht",
       "betrag": 129.00,
@@ -68,7 +68,7 @@ const car =
     "versicherungsbuch": [{
       "name": "R+V",
       "typ": "TK",
-      "abschluss_jahr": 2020,
+      "jahr": 2020,
       "abschluss_kilometerstand": 9325,
       "geschaetzte_laufleistung": 10000,
       "versicherungskosten_jahr": 399.39,

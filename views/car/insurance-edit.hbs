@@ -1,0 +1,37 @@
+<!--insurance add form - gets car as input-->
+<h1>Versicherung ändern</h1>
+
+<h2>Versicherungs-Daten</h2>
+<div>
+  <form action="/myaccount/insurance/edit?carId={{carId}}&insuranceId={{insuranceId}}" method="POST" id="form-insurance-edit">
+    <div>
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="name" value="{{insurance.name}}">
+    </div>
+    <div>
+      <label for="typ">Typ:</label>
+      <input type="text" name="typ" id="typ" value="{{insurance.typ}}">
+    </div>
+    <div>
+      <label for="jahr">Jahr:</label>
+      <input type="text" name="jahr" id="jahr" value="{{insurance.jahr}}">
+    </div>
+    <div>
+      <label for="abschluss_kilometerstand">Abschluss Kilometerstand:</label>
+      <input type="text" name="abschluss_kilometerstand" id="abschluss_kilometerstand" value="{{insurance.abschluss_kilometerstand}}">
+    </div>
+    <div>
+      <label for="geschaetzte_laufleistung">Geschätzte Laufleistung:</label>
+      <input type="text" name="geschaetzte_laufleistung" id="geschaetzte_laufleistung" value="{{insurance.geschaetzte_laufleistung}}">
+    </div>
+    <div>
+      <label for="betrag">Rechnungsbetrag:</label>
+      <input type="text" name="betrag" id="betrag" value="{{insurance.betrag}}">
+    </div>
+    <div>
+      <label for="schadensfreiheitsklasse">Schadensfreiheitsklasse:</label>
+      <input type="text" name="schadensfreiheitsklasse" id="schadensfreiheitsklasse" value="{{insurance.schadensfreiheitsklasse}}">
+    </div>
+    <button type="submit">Speichern</button>   
+  </form>
+</div>

@@ -16,7 +16,7 @@ const carSchema = new Schema({
   kilometerstand_aktuell: { type: Number }, //12000 (updated by most recent kilometerstand_ende)
 
   fahrtenbuch: [{
-    datum:                { type: Number }, //20201231
+    datum:                { type: String }, //2020-12-31
     strecke_km:           { type: Number }, //50 (will be calculated kilometerstandende - kilometerstand_start)
     startort:             { type: String }, //zuhause
     zielort:              { type: String }, //arbeit
@@ -25,7 +25,7 @@ const carSchema = new Schema({
   }],
 
   tankbuch: [{
-    datum:          { type: Number }, //20201231
+    datum:          { type: String }, //2020-12-31
     kilometerstand: { type: Number }, //12025
     liter:          { type: Number }, //35
     literpreis:     { type: Number }, //1.4
@@ -33,7 +33,7 @@ const carSchema = new Schema({
   }], 
 
   werkstattbuch: [{
-    datum:           { type: Number }, //20201231
+    datum:           { type: String }, //2020-12-31
     kilometerstand:  { type: Number }, //12040
     reparaturposten: { type: String }, //Keilriemen
     betrag:          { type: Number }, //230
@@ -43,7 +43,7 @@ const carSchema = new Schema({
   versicherungsbuch: [{
     name:                     { type: String }, //HanseMerkur
     typ:                      { type: String, enum: ['VK','TK','HF'] }, //VK, TK, HF
-    abschluss_jahr:           { type: Number }, //2020 (initial insurance abschluss_monat = erstzulassung_monat)
+    jahr:                     { type: Number }, //2020 (initial insurance abschluss_monat = erstzulassung_monat)
     abschluss_kilometerstand: { type: Number }, //12000
     geschaetzte_laufleistung: { type: Number }, //10000
     betrag:                   { type: Number }, //600

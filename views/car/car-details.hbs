@@ -83,11 +83,11 @@
   {{#each car.versicherungsbuch}}
    {{> insurancePartial }}
    <br>
+   <a href="/myaccount/insurance/edit?carId={{ ../car._id }}&insuranceId={{ this._id }}">Versicherung ändern</a>
+   <br><br>
   {{/each}}
-
+  <br><br>
   <a href="/myaccount/insurance/add/{{ car._id }}">Versicherung hinzufügen</a>
-
-  
 
 </div>
 
