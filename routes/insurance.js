@@ -50,7 +50,7 @@ router.post('/add/:carId', loginCheck(), (req, res, next) => {
       if (foundCar !== null) {
         foundCar.versicherungsbuch.unshift(newInsurance);
         foundCar.save();
-        res.redirect(`/myaccount/car-details/${foundCar._id}`)
+        res.redirect(`/myaccount/car-details/${foundCar._id}`);
       }
     })
     .catch(err => {
