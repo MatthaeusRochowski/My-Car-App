@@ -1,0 +1,29 @@
+<!--add log in logbook - gets car as input-->
+<h1>Neue Fahrt eintragen</h1>
+
+<div>
+  <form action="/myaccount/logbook/add/{{ carId }}" method="POST" id="form-log-add">
+    <div>
+      <label for="datum">Datum:</label>
+      <input type="text" name="datum" id="datum" value={{ heute }}>
+    </div>
+    <div>
+      <label for="startort">Startort:</label>
+      <input type="text" name="startort" id="startort">
+    </div>
+    <div>
+      <label for="zielort">Zielort:</label>
+      <input type="text" name="zielort" id="zielort">
+    </div>
+    <div>
+      <label for="kilometerstand_start">Kilometerstand Start:</label>
+      <input type="number" name="kilometerstand_start" id="kilometerstand_start" value={{ kilometerstand_start }}>
+    </div>
+    <div>
+      <label for="kilometerstand_ende">Kilometerstand Ende:</label>
+      <input type="number" name="kilometerstand_ende" id="kilometerstand_ende">
+    </div>
+    <button type="submit">Speichern</button>   
+  </form>
+</div>
+

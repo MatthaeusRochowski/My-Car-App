@@ -60,17 +60,5 @@ router.post('/car-add', loginCheck(), (req, res, next) => {
       });
 });
 
-// Get my cars from DB and show in car-partial
-router.get("/myrooms", (req, res, next) => {
-  const user = req.session.currentUser;
-  Room.find({ owner: mongoose.Types.ObjectId(user._id) })
-    .populate("owner")
-    .then(allRoomsfromDB => {
-      //console.log(allRoomsfromDB);
-      res.render("rooms/myrooms", { rooms: allRoomsfromDB, user });
-    })
-    .catch(err => next(err));
-});
-
 
 module.exports = router;

@@ -14,12 +14,15 @@
         </nav>
     </header>
 
-<a href="/car-add"><button type="submit">Fahrzeug hinzufügen</button></a>
+
 
 <h1>Meine Fahrzeuge</h1>
+
+<a href="/car-add"><button type="submit">Fahrzeug hinzufügen</button></a>
 
 {{#each this.car}}
     {{> carPartial }}
     <br>
+    <span></span><a href="/myaccount/logbook/add/{{ this._id }}">Neue Fahrt</a></span>
     <a href="/myaccount/car-details/{{ this._id }}"><button>Fahrzeugdetails</button></a>
 {{/each}}
