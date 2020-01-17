@@ -61,6 +61,7 @@ router.post('/add/:carId', loginCheck(), (req, res, next) => {
 /* prefixed with /myaccount/insurance in app.js*/
 //Edit Insurance - step 1
 router.get('/edit', loginCheck(), (req, res, next) => {
+  console.log("in edit insurance");
   const carId = req.query.carId;
   const insuranceId = req.query.insuranceId
   const loggedUser = req.session.user;
@@ -86,7 +87,6 @@ router.get('/edit', loginCheck(), (req, res, next) => {
 //Edit Insurance - step 2
 /* prefixed with /myaccount/insurance in app.js*/
 router.post('/edit', loginCheck(), (req, res, next) => {
-  console.log("in insurance edit post");
   const carId = req.query.carId; //needed to add te insurance to the correct car
   const insuranceId = req.query.insuranceId;
 
@@ -114,10 +114,38 @@ router.post('/edit', loginCheck(), (req, res, next) => {
   Car.findById({ _id: mongoose.Types.ObjectId(carId) })
     .then(foundCar => {
       if (foundCar !== null) {
-        //the index could be used instead for efficiency (DB order stays stable ?)
         for (let index in foundCar.versicherungsbuch) {
           if (foundCar.versicherungsbuch[index]._id.toString() === insuranceId.toString()) {
             foundCar.versicherungsbuch.splice(index,1,updatedInsurance);
+            foundCar.save();
+          }
+        }
+        res.redirect(`/myaccount/car-details/${foundCar._id}`)
+      }
+    })
+    .catch(err => {
+      next(err);
+    });
+});
+
+//Delete Insurance
+/* prefixed with /myaccount/insurance in app.js*/
+router.get('/delete', loginCheck(), (req, res, next) => {
+  console.log("in insurance delete");
+  const carId = req.query.carId; //needed to add te insurance to the correct car
+  const insuranceId = req.query.insuranceId;
+
+  console.log("carId: " + carId);
+  console.log("insuranceId: " + insuranceId);
+
+  const loggedUser = req.session.user;
+
+  Car.findById({ _id: mongoose.Types.ObjectId(carId) })
+    .then(foundCar => {
+      if (foundCar !== null) {
+        for (let index in foundCar.versicherungsbuch) {
+          if (foundCar.versicherungsbuch[index]._id.toString() === insuranceId.toString()) {
+            foundCar.versicherungsbuch.splice(index,1);
             foundCar.save();
           }
         }
