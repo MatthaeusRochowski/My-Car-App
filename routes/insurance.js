@@ -61,22 +61,20 @@ router.post('/add/:carId', loginCheck(), (req, res, next) => {
 /* prefixed with /myaccount/insurance in app.js*/
 //Edit Insurance - step 1
 router.get('/edit', loginCheck(), (req, res, next) => {
-  const carId=req.query.carId;
-  const insuranceId=req.query.insuranceId
+  const carId = req.query.carId;
+  const insuranceId = req.query.insuranceId
   const loggedUser = req.session.user;
 
   let insuranceForEdit = {};
 
-  Car.findById({ '_id': mongoose.Types.ObjectId(carId) }) //can also search by insuranceId but this would be less efficient for DB
+  Car.findById({ '_id': mongoose.Types.ObjectId(carId) })
   .then(foundCar => {
     if (foundCar !== null) {
       for (let index in foundCar.versicherungsbuch) {
         if (foundCar.versicherungsbuch[index]._id.toString() === insuranceId.toString()) {
-           insuranceForEdit = foundCar.versicherungsbuch[index];
+          insuranceForEdit = foundCar.versicherungsbuch[index];
         }
       }
-      //console.log(insuranceIndex);
-      //console.log(insuranceForEdit);
       res.render('car/insurance-edit', { user: loggedUser, carId: carId, insurance: insuranceForEdit } );
     }
   })
@@ -89,8 +87,9 @@ router.get('/edit', loginCheck(), (req, res, next) => {
 /* prefixed with /myaccount/insurance in app.js*/
 router.post('/edit', loginCheck(), (req, res, next) => {
   console.log("in insurance edit post");
-  const carId = req.body.carId; //needed to add te insurance to the correct car
-  const insuranceId = req.body.insuranceId;
+  const carId = req.query.carId; //needed to add te insurance to the correct car
+  const insuranceId = req.query.insuranceId;
+
   const loggedUser = req.session.user;
 
   const name = req.body.name;
@@ -110,11 +109,10 @@ router.post('/edit', loginCheck(), (req, res, next) => {
     geschaetzte_laufleistung: geschaetzte_laufleistung,
     betrag: betrag,
     schadensfreiheitsklasse: schadensfreiheitsklasse
-  }
+  };
 
   Car.findById({ _id: mongoose.Types.ObjectId(carId) })
     .then(foundCar => {
-      console.log(foundCar);
       if (foundCar !== null) {
         //the index could be used instead for efficiency (DB order stays stable ?)
         for (let index in foundCar.versicherungsbuch) {
