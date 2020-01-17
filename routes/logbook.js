@@ -22,11 +22,10 @@ router.get('/add/:carId', loginCheck(), (req, res, next) => {
   
   Car.findById({ _id: mongoose.Types.ObjectId(carId) })
   .then(foundCar => {
-    foundCar.fahrtenbuch[foundCar.fahrtenbuch.length - 1].kilometerstand_ende;
+    let kilometerstand_start = foundCar.fahrtenbuch[0].kilometerstand_ende;
+    console.log(kilometerstand_start);
+    res.render('car/log-add', { user: loggedUser, carId: carId, heute: heute, kilometerstand_start: kilometerstand_start} );
   });
-  console.log(kilometerstand_start);
-
-  res.render('car/log-add', { user: loggedUser, carId: carId, heute: heute, kilometerstand_start: kilometerstand_start} );
 });
 
 /* prefixed with /myaccount/logbook in app.js*/
@@ -43,13 +42,13 @@ router.post('/add/:carId', loginCheck(), (req, res, next) => {
     zielort: zielort,
     kilometerstand_start: kilometerstand_start,
     kilometerstand_ende: kilometerstand_ende,
-    strecke: strecke
+    strecke_km: strecke
   };
 
   Car.findById({ _id: mongoose.Types.ObjectId(carId) })
     .then(foundCar => {
       if (foundCar !== null) {
-        foundCar.fahrtenbuch.push(newLogbookEntry);
+        foundCar.fahrtenbuch.unshift(newLogbookEntry);
         foundCar.save();
         res.redirect(`/myaccount/car-details/${foundCar._id}`);
       }
