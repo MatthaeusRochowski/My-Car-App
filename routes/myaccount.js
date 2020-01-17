@@ -49,10 +49,11 @@ router.post('/car-add', loginCheck(), (req, res, next) => {
   const {kennzeichen, hersteller, modell, hsn, tsn, 
     kraftstoff, leistung_ps, erstzulassung_monat, 
     erstzulassung_jahr, kaufpreis, kilometerstand_kauf} = req.body;
+  const kilometerstand_aktuell = kilometerstand_kauf;
 
   Car.create({kennzeichen, hersteller, modell, hsn, tsn, 
     kraftstoff, leistung_ps, erstzulassung_monat, 
-    erstzulassung_jahr, kaufpreis, kilometerstand_kauf, eigner_ref}).then(() => {
+    erstzulassung_jahr, kaufpreis, kilometerstand_kauf, kilometerstand_aktuell, eigner_ref}).then(() => {
       res.render('auth/myaccount', {user: loggedUser});
     })
       .catch(err => {

@@ -22,7 +22,7 @@ router.get('/add/:carId', loginCheck(), (req, res, next) => {
   
   Car.findById({ _id: mongoose.Types.ObjectId(carId) })
   .then(foundCar => {
-    let kilometerstand_start = foundCar.fahrtenbuch[0].kilometerstand_ende;
+    let kilometerstand_start = foundCar.kilometerstand_aktuell;
     res.render('car/log-add', { user: loggedUser, carId: carId, heute: heute, kilometerstand_start: kilometerstand_start} );
   });
 });
@@ -48,6 +48,7 @@ router.post('/add/:carId', loginCheck(), (req, res, next) => {
     .then(foundCar => {
       if (foundCar !== null) {
         foundCar.fahrtenbuch.unshift(newLogbookEntry);
+        foundCar.kilometerstand_aktuell = newLogbookEntry.kilometerstand_ende;
         foundCar.save();
         res.redirect(`/myaccount/car-details/${foundCar._id}`);
       }
