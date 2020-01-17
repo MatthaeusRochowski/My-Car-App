@@ -44,7 +44,7 @@ router.get('/car-add', loginCheck(), (req,res) => {
 
 router.post('/car-add', loginCheck(), (req, res, next) => {
   const loggedUser = req.session.user;
-  //console.log(loggedUser);
+  console.log(loggedUser);
   const eigner_ref = loggedUser._id;
   const {kennzeichen, hersteller, modell, hsn, tsn, 
     kraftstoff, leistung_ps, erstzulassung_monat, 
@@ -53,7 +53,7 @@ router.post('/car-add', loginCheck(), (req, res, next) => {
   Car.create({kennzeichen, hersteller, modell, hsn, tsn, 
     kraftstoff, leistung_ps, erstzulassung_monat, 
     erstzulassung_jahr, kaufpreis, kilometerstand_kauf, eigner_ref}).then(() => {
-      res.render('auth/myaccount', {user: loggedUser});
+      res.redirect('/myaccount');
     })
       .catch(err => {
         next(err);
