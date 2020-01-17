@@ -56,6 +56,7 @@
   {{#each car.fahrtenbuch}}
    {{> logPartial }}
   {{/each}}
+  <a href="/myaccount/logbook/add/{{ car._id }}">Neue Fahrt</a>
 
 </div>
 
@@ -65,6 +66,7 @@
   {{#each car.tankbuch}}
    {{> fuelPartial }}
   {{/each}}
+  <a href="/myaccount/fuelbook/add/{{ car._id }}">Tanken</a>
 
 </div>
 
