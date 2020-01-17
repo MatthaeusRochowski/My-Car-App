@@ -1,0 +1,29 @@
+<!--service add form - gets car as input-->
+<h1>Werkstatt-Rechnung ändern</h1>
+
+<h2>Werkstatt-Rechnungs-Daten</h2>
+<div>
+  <form action="/myaccount/service/edit?carId={{carId}}&serviceId={{service._id}}" method="POST" id="form-service-edit">
+    <div>
+      <label for="datum">Datum:</label>
+      <input type="text" name="datum" id="datum" value="{{service.datum}}">
+    </div>
+    <div>
+      <label for="kilometerstand">Kilometerstand:</label>
+      <input type="text" name="kilometerstand" id="kilometerstand" value="{{service.kilometerstand}}">
+    </div>
+    <div>
+      <label for="reparaturposten">Reparaturposten:</label>
+      <input type="text" name="reparaturposten" id="reparaturposten" value="{{service.reparaturposten}}">
+    </div>
+    <div>
+      <label for="betrag">Rechnungsbetrag:</label>
+      <input type="text" name="betrag" id="betrag" value="{{service.betrag}}">
+    </div>
+    <div>
+      <label for="rechnungs_url">Rechnung:</label>
+      <input type="text" name="rechnungs_url" id="rechnungs_url" value="{{service.rechnungs_url}}">
+    </div>
+    <button type="submit">Speichern</button>   
+  </form>
+</div>
