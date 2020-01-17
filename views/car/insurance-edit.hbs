@@ -3,7 +3,7 @@
 
 <h2>Versicherungs-Daten</h2>
 <div>
-  <form action="/myaccount/insurance/edit?carId={{carId}}&insuranceId={{insuranceId}}" method="POST" id="form-insurance-edit">
+  <form action="/myaccount/insurance/edit?carId={{carId}}&insuranceId={{insurance._id}}" method="POST" id="form-insurance-edit">
     <div>
       <label for="name">Name:</label>
       <input type="text" name="name" id="name" value="{{insurance.name}}">
