@@ -23,6 +23,7 @@
 {{#each this.car}}
     {{> carPartial }}
     <br>
-    <span></span><a href="/myaccount/logbook/add/{{ this._id }}">Neue Fahrt</a></span>
+    <span><a href="/myaccount/logbook/add/{{ this._id }}">Neue Fahrt</a></span>
+    <span><a href="/myaccount/fuelbook/add/{{ this._id }}">Tanken</a></span>
     <a href="/myaccount/car-details/{{ this._id }}"><button>Fahrzeugdetails</button></a>
 {{/each}}

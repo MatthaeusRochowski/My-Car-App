@@ -79,6 +79,8 @@ const myAccount = require("./routes/myaccount");
 app.use("/", myAccount);
 const logbook = require("./routes/logbook");
 app.use("/myaccount/logbook", logbook);
+const fuelbook = require("./routes/fuelbook");
+app.use("/myaccount/fuelbook", fuelbook);
 const service = require("./routes/service");
 app.use("/myaccount/service", service);
 const insurance = require("./routes/insurance");

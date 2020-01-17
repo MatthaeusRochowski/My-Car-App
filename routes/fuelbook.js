@@ -12,8 +12,8 @@ const loginCheck = () => {
     (req.session.user ? next () : res.redirect('/'));
 };
 
-/* prefixed with /myaccount/logbook in app.js*/
-//Add Logbook Entry
+/* prefixed with /myaccount/fuelbook in app.js*/
+//Add fuelbook Entry
 router.get('/add/:carId', loginCheck(), (req, res, next) => {
   const carId = req.params.carId;
   const loggedUser = req.session.user;
@@ -22,32 +22,30 @@ router.get('/add/:carId', loginCheck(), (req, res, next) => {
   
   Car.findById({ _id: mongoose.Types.ObjectId(carId) })
   .then(foundCar => {
-    let kilometerstand_start = foundCar.fahrtenbuch[0].kilometerstand_ende;
-    res.render('car/log-add', { user: loggedUser, carId: carId, heute: heute, kilometerstand_start: kilometerstand_start} );
+    let kilometerstand = foundCar.fahrtenbuch[0].kilometerstand_start;
+    res.render('car/fuel-add', { user: loggedUser, carId: carId, heute: heute, kilometerstand: kilometerstand} );
   });
 });
 
-/* prefixed with /myaccount/logbook in app.js*/
+/* prefixed with /myaccount/fuelbook in app.js*/
 router.post('/add/:carId', loginCheck(), (req, res, next) => {
   const carId = req.params.carId;
   const loggedUser = req.session.user;
 
-  const { datum, startort, zielort, kilometerstand_start, kilometerstand_ende } = req.body;
-  const strecke = kilometerstand_ende - kilometerstand_start;
-  
-  const newLogbookEntry = {
+  const { datum, kilometerstand, liter, literpreis, betrag } = req.body;
+
+  const newFuelbookEntry = {
     datum: datum,
-    startort: startort,
-    zielort: zielort,
-    kilometerstand_start: kilometerstand_start,
-    kilometerstand_ende: kilometerstand_ende,
-    strecke_km: strecke
+    kilometerstand: kilometerstand,
+    liter: liter,
+    literpreis: literpreis,
+    betrag: betrag,
   };
 
   Car.findById({ _id: mongoose.Types.ObjectId(carId) })
     .then(foundCar => {
       if (foundCar !== null) {
-        foundCar.fahrtenbuch.unshift(newLogbookEntry);
+        foundCar.tankbuch.unshift(newFuelbookEntry);
         foundCar.save();
         res.redirect(`/myaccount/car-details/${foundCar._id}`);
       }
