@@ -85,6 +85,7 @@ const service = require("./routes/service");
 app.use("/myaccount/service", service);
 const insurance = require("./routes/insurance");
 app.use("/myaccount/insurance", insurance);
-
+const tax = require("./routes/tax");
+app.use("/myaccount/tax", tax);
 
 module.exports = app;

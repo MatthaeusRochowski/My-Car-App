@@ -1,0 +1,21 @@
+<!--tax add form - gets car as input-->
+<h1>KFZ-Steuer ändern</h1>
+
+<h2>KFZ-Steuer-Daten</h2>
+<div>
+  <form action="/myaccount/tax/edit?carId={{carId}}&taxId={{tax._id}}" method="POST" id="form-tax-edit">
+    <div>
+      <label for="typ">Typ:</label>
+      <input type="text" name="typ" id="typ" value="{{tax.typ}}">
+    </div>
+    <div>
+      <label for="jahr">Jahr:</label>
+      <input type="text" name="jahr" id="jahr" value="{{tax.jahr}}">
+    </div>
+    <div>
+      <label for="betrag">Rechnungsbetrag:</label>
+      <input type="text" name="betrag" id="betrag" value="{{tax.betrag}}">
+    </div>
+    <button type="submit">Speichern</button>   
+  </form>
+</div>
