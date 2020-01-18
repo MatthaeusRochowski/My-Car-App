@@ -3,7 +3,7 @@
 <h2>Fahrzeug Daten für {{ car.kennzeichen }} </h2>
 <div>
   <button id="car-edit-button">Fahrzeug Daten Ändern</button>
-  <form action="car/edit/:id" id="car-edit-form">
+  <form action="/edit/{{ car._id }}" method="POST" id="car-edit-form">
   <fieldset disabled id="car-edit-fieldset">
     <div>
       <label for="kennzeichen">Kennzeichen:</label>
@@ -49,6 +49,7 @@
       <label for="kilometerstand_aktuell">aktueller Kilometerstand:</label>
       <input type="text" name="kilometerstand_aktuell" id="kilometerstand_aktuell" value="{{ car.kilometerstand_aktuell }}">
     </div>
+    <button type="submit" id="update-car-details" style="display: none">Änderungen Speichern</button>
     </fieldset>
   </form>
 </div>
