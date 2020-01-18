@@ -1,55 +1,64 @@
 <h1>Fahrzeug Details</h1>
+<form action="/remove/{{ car._id }}" method="POST" id="car-remove-form">
+  <div>
+    <button id="car-remove-button">Fahrzeug entfernen</button>
+  </div>
+</form>
+
 
 <h2>Fahrzeug Daten für {{ car.kennzeichen }} </h2>
 <div>
   <button id="car-edit-button">Fahrzeug Daten Ändern</button>
+
   <form action="/edit/{{ car._id }}" method="POST" id="car-edit-form">
-  <fieldset disabled id="car-edit-fieldset">
-    <div>
-      <label for="kennzeichen">Kennzeichen:</label>
-      <input type="text" name="kennzeichen" id="kennzeichen" value="{{ car.kennzeichen }}">
-    </div>
-    <div>
-      <label for="hersteller">Hersteller:</label>
-      <input type="text" name="hersteller" id="hersteller" value="{{ car.hersteller }}">
-    </div>
-    <div>
-      <label for="modell">Modell:</label>
-      <input type="text" name="modell" id="modell" value="{{ car.modell }}">
-    </div>
-    <div>
-      <label for="hsn">HSN:</label>
-      <input type="text" name="hsn" id="hsn" value="{{ car.hsn }}">
-    </div>
-    <div>
-      <label for="tsn">TSN:</label>
-      <input type="text" name="tsn" id="tsn" value="{{ car.tsn }}">
-    </div>
-    <div>
-      <label for="kraftstoff">Kraftstoff:</label>
-      <input type="text" name="kraftstoff" id="kraftstoff" value="{{ car.kraftstoff }}">
-    </div>
-    <div>
-      <label for="leistung_ps">Leistung in PS:</label>
-      <input type="text" name="leistung_ps" id="leistung_ps" value="{{ car.leistung_ps }}">
-    </div>
-    <div>
-      <label for="erstzulassung">Erstzulassung:</label>
-      <input type="text" name="erstzulassung" id="erstzulassung" value="{{ car.erstzulassung_monat }}/{{ car.erstzulassung_jahr }}">
-    </div>
-    <div>
-      <label for="kaufpreis">Kaufpreis:</label>
-      <input type="text" name="kaufpreis" id="kaufpreis" value="{{ car.kaufpreis }}">
-    </div>
-    <div>
-      <label for="kilometerstand_kauf">Kilometerstand bei Kauf:</label>
-      <input type="text" name="kilometerstand_kauf" id="kilometerstand_kauf" value="{{ car.kilometerstand_kauf }}">
-    </div>
-    <div>
-      <label for="kilometerstand_aktuell">aktueller Kilometerstand:</label>
-      <input type="text" name="kilometerstand_aktuell" id="kilometerstand_aktuell" value="{{ car.kilometerstand_aktuell }}">
-    </div>
-    <button type="submit" id="update-car-details" style="display: none">Änderungen Speichern</button>
+    <fieldset disabled id="car-edit-fieldset">
+      <div>
+        <label for="kennzeichen">Kennzeichen:</label>
+        <input type="text" name="kennzeichen" id="kennzeichen" value="{{ car.kennzeichen }}">
+      </div>
+      <div>
+        <label for="hersteller">Hersteller:</label>
+        <input type="text" name="hersteller" id="hersteller" value="{{ car.hersteller }}">
+      </div>
+      <div>
+        <label for="modell">Modell:</label>
+        <input type="text" name="modell" id="modell" value="{{ car.modell }}">
+      </div>
+      <div>
+        <label for="hsn">HSN:</label>
+        <input type="text" name="hsn" id="hsn" value="{{ car.hsn }}">
+      </div>
+      <div>
+        <label for="tsn">TSN:</label>
+        <input type="text" name="tsn" id="tsn" value="{{ car.tsn }}">
+      </div>
+      <div>
+        <label for="kraftstoff">Kraftstoff:</label>
+        <input type="text" name="kraftstoff" id="kraftstoff" value="{{ car.kraftstoff }}">
+      </div>
+      <div>
+        <label for="leistung_ps">Leistung in PS:</label>
+        <input type="text" name="leistung_ps" id="leistung_ps" value="{{ car.leistung_ps }}">
+      </div>
+      <div>
+        <label for="erstzulassung">Erstzulassung:</label>
+        <input type="text" name="erstzulassung" id="erstzulassung"
+          value="{{ car.erstzulassung_monat }}/{{ car.erstzulassung_jahr }}">
+      </div>
+      <div>
+        <label for="kaufpreis">Kaufpreis:</label>
+        <input type="text" name="kaufpreis" id="kaufpreis" value="{{ car.kaufpreis }}">
+      </div>
+      <div>
+        <label for="kilometerstand_kauf">Kilometerstand bei Kauf:</label>
+        <input type="text" name="kilometerstand_kauf" id="kilometerstand_kauf" value="{{ car.kilometerstand_kauf }}">
+      </div>
+      <div>
+        <label for="kilometerstand_aktuell">aktueller Kilometerstand:</label>
+        <input type="text" name="kilometerstand_aktuell" id="kilometerstand_aktuell"
+          value="{{ car.kilometerstand_aktuell }}">
+      </div>
+      <button type="submit" id="update-car-details" style="display: none">Änderungen Speichern</button>
     </fieldset>
   </form>
 </div>
@@ -58,7 +67,7 @@
 <div>
 
   {{#each car.fahrtenbuch}}
-   {{> logPartial }}
+  {{> logPartial }}
   {{/each}}
   <a href="/myaccount/logbook/add/{{ car._id }}">Neue Fahrt</a>
 
@@ -68,7 +77,7 @@
 <div>
 
   {{#each car.tankbuch}}
-   {{> fuelPartial }}
+  {{> fuelPartial }}
   {{/each}}
   <a href="/myaccount/fuelbook/add/{{ car._id }}">Tanken</a>
 
@@ -78,7 +87,7 @@
 <div>
 
   {{#each car.werkstattbuch}}
-   {{> servicePartial }}
+  {{> servicePartial }}
   {{/each}}
 
 </div>
@@ -87,12 +96,12 @@
 <div>
 
   {{#each car.versicherungsbuch}}
-   {{> insurancePartial }}
-   <br>
-   <a href="/myaccount/insurance/edit?carId={{ ../car._id }}&insuranceId={{ this._id }}">Versicherung ändern</a>
-   <br>
-   <a href="/myaccount/insurance/delete?carId={{ ../car._id }}&insuranceId={{ this._id }}">Versicherung löschen</a>
-   <br><br>
+  {{> insurancePartial }}
+  <br>
+  <a href="/myaccount/insurance/edit?carId={{ ../car._id }}&insuranceId={{ this._id }}">Versicherung ändern</a>
+  <br>
+  <a href="/myaccount/insurance/delete?carId={{ ../car._id }}&insuranceId={{ this._id }}">Versicherung löschen</a>
+  <br><br>
   {{/each}}
   <br><br>
   <a href="/myaccount/insurance/add/{{ car._id }}">Versicherung hinzufügen</a>
@@ -103,15 +112,15 @@
 <div>
 
   {{#each car.steuerbuch}}
-   {{> taxPartial }}
-   <br>
-   <a href="/myaccount/tax/edit?carId={{ ../car._id }}&taxId={{ this._id }}">Versicherung ändern</a>
-   <br>
-   <a href="/myaccount/tax/delete?carId={{ ../car._id }}&taxId={{ this._id }}">Versicherung löschen</a>
+  {{> taxPartial }}
+  <br>
+  <a href="/myaccount/tax/edit?carId={{ ../car._id }}&taxId={{ this._id }}">Versicherung ändern</a>
+  <br>
+  <a href="/myaccount/tax/delete?carId={{ ../car._id }}&taxId={{ this._id }}">Versicherung löschen</a>
   {{/each}}
   <br><br>
   <a href="/myaccount/tax/add/{{ car._id }}">Steuereintrag hinzufügen</a>
 
 </div>
 
- <script src="/javascripts/editCar.js"></script>
+<script src="/javascripts/editCar.js"></script>

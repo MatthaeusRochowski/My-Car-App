@@ -102,4 +102,22 @@ router.post("/edit/:carId", loginCheck(), (req, res, next) => {
     });
 });
 
+// Delete a car from database
+router.post("/remove/:carId", loginCheck(), (req, res, next) => {
+  const loggedUser = req.session.user;
+  const carId = req.params.carId;
+  console.log(carId);
+  Car.findByIdAndRemove( { _id: mongoose.Types.ObjectId(carId) } )
+  .then(() => {
+    Car.find({ eigner_ref: mongoose.Types.ObjectId(loggedUser._id) })
+    .populate("eigner_ref")
+    .then(myCars => {
+      res.render("auth/myaccount", { user: loggedUser, car: myCars });
+    });
+  })
+  .catch(err => {
+    next(err);
+  });
+});
+
 module.exports = router;
