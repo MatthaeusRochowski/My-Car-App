@@ -121,7 +121,7 @@ router.post('/edit', loginCheck(), (req, res, next) => {
           if (foundCar.fahrtenbuch[index]._id.toString() === logbookId.toString()) {
             remindLogbookIndex = index;
           }
-          if (foundCar.fahrtenbuch[index].kilometerstand_ende > remindMaxDistance) {
+          else if (foundCar.fahrtenbuch[index].kilometerstand_ende > remindMaxDistance) {
             remindMaxDistance = foundCar.fahrtenbuch[index].kilometerstand_ende;
           }
         }
