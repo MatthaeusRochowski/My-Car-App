@@ -73,7 +73,7 @@ router.post("/car-add", loginCheck(), (req, res, next) => {
     eigner_ref
   })
     .then(() => {
-      res.render("auth/myaccount", { user: loggedUser });
+      res.redirect("/myaccount");
     })
     .catch(err => {
       next(err);

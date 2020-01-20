@@ -41,10 +41,7 @@ router.post('/add/:carId', loginCheck(), (req, res, next) => {
   const betrag = req.body.betrag;
 
   //auto correction of lacking entries
-  if (((betrag !== "")&&(liter !== "")&&(literpreis !== ""))) {
-    betrag = (liter * literpreis);
-  }
-  else if ((betrag === "")&&(liter !== "")&&(literpreis !== "")) {
+  if ((betrag === "")&&(liter !== "")&&(literpreis !== "")) {
     betrag = (liter * literpreis);
   }
   else if ((liter === "")&&(betrag !== "")&&(literpreis !== "")) {
@@ -116,10 +113,7 @@ router.post('/edit', loginCheck(), (req, res, next) => {
   let betrag = req.body.betrag;
 
   //auto correction of lacking entries
-  if (((betrag !== "")&&(liter !== "")&&(literpreis !== ""))) {
-    betrag = (liter * literpreis);
-  }
-  else if ((betrag === "")&&(liter !== "")&&(literpreis !== "")) {
+  if ((betrag === "")&&(liter !== "")&&(literpreis !== "")) {
     betrag = (liter * literpreis);
   }
   else if ((liter === "")&&(betrag !== "")&&(literpreis !== "")) {

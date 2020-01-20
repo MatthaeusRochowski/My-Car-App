@@ -67,8 +67,13 @@
 <div>
 
   {{#each car.fahrtenbuch}}
-  {{> logPartial }}
+   {{> logPartial }}
+   <br>
+   <a href="/myaccount/logbook/edit?carId={{ ../car._id }}&logbookId={{ this._id }}">Eintrag ändern</a>
+   <br>
+   <a href="/myaccount/logbook/delete?carId={{ ../car._id }}&logbookId={{ this._id }}">Eintrag löschen</a>
   {{/each}}
+  <br><br>
   <a href="/myaccount/logbook/add/{{ car._id }}">Neue Fahrt</a>
 
 </div>
