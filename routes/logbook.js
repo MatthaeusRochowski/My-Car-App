@@ -110,12 +110,15 @@ router.post('/edit', loginCheck(), (req, res, next) => {
   Car.findById({ _id: mongoose.Types.ObjectId(carId) })
     .then(foundCar => {
       if (foundCar !== null) {
+        
         for (let index in foundCar.fahrtenbuch) {
           if (foundCar.fahrtenbuch[index]._id.toString() === logbookId.toString()) {
-            foundCar.fahrtenbuch.splice(index,1,updatedLogbookEntry);
-            foundCar.save();
+            remindLogbookIndex = index;
           }
+          //remindMaxDistance (ende)
         }
+        foundCar.fahrtenbuch.splice(index,1,updatedLogbookEntry);
+        foundCar.save();
         res.redirect(`/myaccount/car-details/${foundCar._id}`)
       }
     })
