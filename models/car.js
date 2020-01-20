@@ -213,7 +213,8 @@ const carSchema = new Schema({
   kaufpreis: { type: Number }, //15000
   kilometerstand_kauf: { type: Number, min: 0 }, //0
   kilometerstand_aktuell: { type: Number }, //12000 (updated by most recent kilometerstand_ende)
-  bild: { type: String },
+  bild:                   { type: String }, //http://cloudinary....
+  kilometerkosten:        { type: Number }, //experimental
 
   fahrtenbuch: [
     {

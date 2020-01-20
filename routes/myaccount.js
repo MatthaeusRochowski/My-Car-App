@@ -26,6 +26,54 @@ router.get("/myaccount", loginCheck(), (req, res, next) => {
   Car.find({ eigner_ref: mongoose.Types.ObjectId(loggedUser._id) })
     .populate("eigner_ref")
     .then(myCars => {
+      //calc cost per km of each car display it and save it to the database
+      //value loss of the car is yet not taken into consideration
+      for (let car of myCars) {
+        let fahrtenbuchKm = 0;
+        let tankbuchSum = 0;
+        let werkstattbuchSum = 0;
+        let versicherungsbuchSum = 0;
+        let steuerbuchSum = 0;
+
+        for (let trip of car.fahrtenbuch) {
+          if (!isNaN(trip.strecke_km)) {
+            fahrtenbuchKm += trip.strecke_km;
+          }
+        }
+        for (let fuel of car.tankbuch) {
+          if (!isNaN(fuel.betrag)) {
+            tankbuchSum += fuel.betrag;
+          }
+        }
+        for (let service of car.werkstattbuch) {
+          if (!isNaN(service.betrag)) {
+            werkstattbuchSum += service.betrag;
+          }
+        }
+        for (let insure of car.versicherungsbuch) {
+          if (!isNaN(insure.betrag)) {
+            versicherungsbuchSum += insure.betrag;
+          }
+        }
+        for (let tax of car.steuerbuch) {
+          if (!isNaN(tax.betrag)) {
+            steuerbuchSum += tax.betrag;
+          }
+        }
+        //console.log(fahrtenbuchKm);
+        //console.log(tankbuchSum);
+        //console.log(werkstattbuchSum);
+        //console.log(versicherungsbuchSum);
+        //console.log(steuerbuchSum);
+        //console.log((tankbuchSum+werkstattbuchSum+versicherungsbuchSum+steuerbuchSum)/fahrtenbuchKm);
+        if ((fahrtenbuchKm > 0)&&((tankbuchSum+werkstattbuchSum+versicherungsbuchSum+steuerbuchSum) > 0)) {
+          car.kilometerkosten = Math.round(((tankbuchSum+werkstattbuchSum+versicherungsbuchSum+steuerbuchSum)/(fahrtenbuchKm))*100)/100;
+        }
+        else {
+          car.kilometerkosten = 0;
+        }
+        car.save();
+      }
       res.render("auth/myaccount", { user: loggedUser, car: myCars });
     })
     .catch(err => next(err));
