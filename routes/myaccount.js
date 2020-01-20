@@ -3,6 +3,10 @@ const express = require("express");
 const router = express.Router();
 const Car = require("../models/car");
 const mongoose = require("mongoose");
+//const multer = require("multer");
+
+const uploadCloud = require('../config/cloudinary.js');
+//const upload = multer({ dest: './public/upload/' });
 
 /*  */
 const loginCheck = () => {
@@ -85,7 +89,7 @@ router.get("/car-add", loginCheck(), (req, res) => {
   res.render("car/car-add", { user: loggedUser });
 });
 
-router.post("/car-add", loginCheck(), (req, res, next) => {
+router.post("/car-add", [uploadCloud.single("autobild"), loginCheck()], (req, res, next) => {
   const loggedUser = req.session.user;
   console.log(loggedUser);
   const eigner_ref = loggedUser._id;
@@ -103,7 +107,11 @@ router.post("/car-add", loginCheck(), (req, res, next) => {
     kilometerstand_kauf
   } = req.body;
   const kilometerstand_aktuell = kilometerstand_kauf;
+  let bild = "/images/DefaultPlatzhalter.png";
 
+  if (req.file) bild = req.file.url;
+
+  
   Car.create({
     kennzeichen,
     hersteller,
@@ -117,10 +125,11 @@ router.post("/car-add", loginCheck(), (req, res, next) => {
     kaufpreis,
     kilometerstand_kauf,
     kilometerstand_aktuell,
-    eigner_ref
+    eigner_ref,
+    bild
   })
     .then(() => {
-      res.redirect("/myaccount");
+      res.redirect("/myaccount");      
     })
     .catch(err => {
       next(err);
@@ -166,5 +175,7 @@ router.post("/remove/:carId", loginCheck(), (req, res, next) => {
     next(err);
   });
 });
+
+
 
 module.exports = router;
