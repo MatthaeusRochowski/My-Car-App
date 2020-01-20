@@ -171,6 +171,31 @@ form input {
 }
 
 
+/* MYACCOUNT **********************/
+
+.cards-container {
+  display: flex;
+  padding: 10% 20%;
+  justify-content: space-around;
+}
+
+.car-partial p {
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+.car-partial li {
+  float: right;
+}
+
+.car-partial img {
+  object-fit: cover;
+  object-position: center;
+  height: 200px;
+}
+
+
 
 
 /*body {
