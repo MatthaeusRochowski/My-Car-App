@@ -1,7 +1,12 @@
-<div class="car-partial">
+<div class="car-partial" style="width: 18rem;">
+    <img src="{{bild}}" alt="Autobild"/>    
     <p>Kennzeichen: {{ kennzeichen }}</p>
     <p>Hersteller: {{ hersteller }}</p>
     <p>Modell: {{ modell }}</p>
     <p>Erstzulassung: {{ erstzulassung_monat }}/{{ erstzulassung_jahr }}</p>
-    <p>Kilometerstand: {{ kilometerstand_aktuell }}</p>   
+    <p>Kilometerstand: {{ kilometerstand_aktuell }}</p>
+    <br>
+    <a href="/myaccount/logbook/add/{{ this._id }}" class="button"><button>Neue Fahrt</button></a><br>
+    <a href="/myaccount/fuelbook/add/{{ this._id }}" class="button"><button>Tanken</button></a><br>
+    <a href="/myaccount/car-details/{{ this._id }}" class="button"><button>Fahrzeugdetails</button></a><br>
 </div>
