@@ -36,9 +36,9 @@ router.post('/add/:carId', loginCheck(), (req, res, next) => {
   //const { datum, kilometerstand, liter, literpreis, betrag } = req.body;
   const datum = req.body.datum;
   const kilometerstand = req.body.kilometerstand;
-  const liter = req.body.liter;
-  const literpreis = req.body.literpreis;
-  const betrag = req.body.betrag;
+  let liter = req.body.liter;
+  let literpreis = req.body.literpreis;
+  let betrag = req.body.betrag;
 
   //auto correction of lacking entries
   if ((betrag === "")&&(liter !== "")&&(literpreis !== "")) {
