@@ -35,6 +35,7 @@ router.post('/add/:carId', loginCheck(), (req, res, next) => {
 
   const { datum, startort, zielort, kilometerstand_start, kilometerstand_ende } = req.body;
   const strecke = kilometerstand_ende - kilometerstand_start;
+  let remindMaxDistance = kilometerstand_ende;
   
   const newLogbookEntry = {
     datum: datum,
@@ -48,8 +49,13 @@ router.post('/add/:carId', loginCheck(), (req, res, next) => {
   Car.findById({ _id: mongoose.Types.ObjectId(carId) })
     .then(foundCar => {
       if (foundCar !== null) {
+        for (let index in foundCar.fahrtenbuch) {
+          if (foundCar.fahrtenbuch[index].kilometerstand_ende > remindMaxDistance) {
+            remindMaxDistance = foundCar.fahrtenbuch[index].kilometerstand_ende;
+          }
+        }
+        foundCar.kilometerstand_aktuell = remindMaxDistance;
         foundCar.fahrtenbuch.unshift(newLogbookEntry);
-        foundCar.kilometerstand_aktuell = newLogbookEntry.kilometerstand_ende;
         foundCar.save();
         res.redirect(`/myaccount/car-details/${foundCar._id}`);
       }
@@ -97,6 +103,7 @@ router.post('/edit', loginCheck(), (req, res, next) => {
 
   const { datum, startort, zielort, kilometerstand_start, kilometerstand_ende } = req.body;
   const strecke = kilometerstand_ende - kilometerstand_start;
+  let remindMaxDistance = kilometerstand_ende;
   
   const updatedLogbookEntry = {
     datum: datum,
@@ -110,14 +117,16 @@ router.post('/edit', loginCheck(), (req, res, next) => {
   Car.findById({ _id: mongoose.Types.ObjectId(carId) })
     .then(foundCar => {
       if (foundCar !== null) {
-        
         for (let index in foundCar.fahrtenbuch) {
           if (foundCar.fahrtenbuch[index]._id.toString() === logbookId.toString()) {
             remindLogbookIndex = index;
           }
-          //remindMaxDistance (ende)
+          else if (foundCar.fahrtenbuch[index].kilometerstand_ende > remindMaxDistance) {
+            remindMaxDistance = foundCar.fahrtenbuch[index].kilometerstand_ende;
+          }
         }
-        foundCar.fahrtenbuch.splice(index,1,updatedLogbookEntry);
+        foundCar.kilometerstand_aktuell = remindMaxDistance;
+        foundCar.fahrtenbuch.splice(remindLogbookIndex,1,updatedLogbookEntry);
         foundCar.save();
         res.redirect(`/myaccount/car-details/${foundCar._id}`)
       }
