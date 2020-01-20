@@ -1,0 +1,29 @@
+<!--fuel entry edit form - gets car as input-->
+<h1>Eintrag ändern</h1>
+
+<h2>Tankrechnungs-Daten</h2>
+<div>
+  <form action="/myaccount/fuelbook/edit?carId={{carId}}&fuelbookId={{fuelbook._id}}" method="POST" id="form-fuelbook-edit">
+    <div>
+      <label for="datum">Datum:</label>
+      <input type="text" name="datum" id="datum" value="{{fuelbook.datum}}">
+    </div>
+    <div>
+      <label for="kilometerstand">Kilometerstand:</label>
+      <input type="number" name="kilometerstand" id="kilometerstand" value="{{fuelbook.kilometerstand}}" step="1">
+    </div>
+    <div>
+      <label for="liter">Liter:</label>
+      <input type="number" name="liter" id="liter" value="{{fuelbook.liter}}" step=".01">
+    </div>
+    <div>
+      <label for="literpreis">Literpreis:</label>
+      <input type="number" name="literpreis" id="literpreis" value="{{fuelbook.literpreis}}" step=".01">
+    </div>
+    <div>
+      <label for="betrag">Summe:</label>
+      <input type="number" name="betrag" id="betrag" value="{{fuelbook.betrag}}" step=".01">
+    </div>
+    <button type="submit">Speichern</button>   
+  </form>
+</div>

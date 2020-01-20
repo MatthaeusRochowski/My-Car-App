@@ -52,60 +52,60 @@
 
 <h2>Fahrtenbuch</h2>
 <div>
-
   {{#each car.fahrtenbuch}}
    {{> logPartial }}
   {{/each}}
   <a href="/myaccount/logbook/add/{{ car._id }}">Neue Fahrt</a>
-
 </div>
 
 <h2>Tankbuch</h2>
 <div>
-
   {{#each car.tankbuch}}
    {{> fuelPartial }}
+   <br>
+   <a href="/myaccount/fuelbook/edit?carId={{ ../car._id }}&fuelbookId={{ this._id }}">Eintrag ändern</a>
+   <br>
+   <a href="/myaccount/fuelbook/delete?carId={{ ../car._id }}&fuelbookId={{ this._id }}">Eintrag löschen</a>
   {{/each}}
+  <br><br>
   <a href="/myaccount/fuelbook/add/{{ car._id }}">Tanken</a>
-
 </div>
 
 <h2>Werkstatt Buch</h2>
 <div>
-
   {{#each car.werkstattbuch}}
    {{> servicePartial }}
+   <br>
+   <a href="/myaccount/service/edit?carId={{ ../car._id }}&serviceId={{ this._id }}">Eintrag ändern</a>
+   <br>
+   <a href="/myaccount/service/delete?carId={{ ../car._id }}&serviceId={{ this._id }}">Eintrag löschen</a>
   {{/each}}
-
+  <br><br>
+  <a href="/myaccount/service/add/{{ car._id }}">Werkstatt-Rechnung hinzufügen</a>
 </div>
 
 <h2>Versicherung</h2>
 <div>
-
   {{#each car.versicherungsbuch}}
    {{> insurancePartial }}
    <br>
-   <a href="/myaccount/insurance/edit?carId={{ ../car._id }}&insuranceId={{ this._id }}">Versicherung ändern</a>
+   <a href="/myaccount/insurance/edit?carId={{ ../car._id }}&insuranceId={{ this._id }}">Eintrag ändern</a>
    <br>
-   <a href="/myaccount/insurance/delete?carId={{ ../car._id }}&insuranceId={{ this._id }}">Versicherung löschen</a>
-   <br><br>
+   <a href="/myaccount/insurance/delete?carId={{ ../car._id }}&insuranceId={{ this._id }}">Eintrag löschen</a>
   {{/each}}
   <br><br>
   <a href="/myaccount/insurance/add/{{ car._id }}">Versicherung hinzufügen</a>
-
 </div>
 
 <h2>Kfz-Steuer</h2>
 <div>
-
   {{#each car.steuerbuch}}
    {{> taxPartial }}
    <br>
-   <a href="/myaccount/tax/edit?carId={{ ../car._id }}&taxId={{ this._id }}">Versicherung ändern</a>
+   <a href="/myaccount/tax/edit?carId={{ ../car._id }}&taxId={{ this._id }}">Eintrag ändern</a>
    <br>
-   <a href="/myaccount/tax/delete?carId={{ ../car._id }}&taxId={{ this._id }}">Versicherung löschen</a>
+   <a href="/myaccount/tax/delete?carId={{ ../car._id }}&taxId={{ this._id }}">Eintrag löschen</a>
   {{/each}}
   <br><br>
   <a href="/myaccount/tax/add/{{ car._id }}">Steuereintrag hinzufügen</a>
-
 </div>
