@@ -19,3 +19,33 @@
    Beschreibung My-Car-App
  </div>
 </section>
+<section>
+
+</section>
+<!--fuel-->
+<section>
+    <form action="/myaccount/getGeoCoords/" method="GET" id="form-geoCode-get">
+        <div>
+            <label for="plz">Postleitzahl:</label>
+            <input type="text" name="plz" id="plz" value="{{plz}}">
+        </div>
+        <div>
+            <label for="laengengrad">Längengrad:</label>
+            <input type="text" name="laengengrad" id="laengengrad" value="{{latitude}}" readonly>
+        </div>
+        <div>
+            <label for="breitengrad">Breitengrad:</label>
+            <input type="text" name="breitengrad" id="breitengrad" value="{{longitude}}" readonly>
+        </div>
+        <button type="submit">Abschicken</button>   
+    </form>
+    {{#each fuelStationResult.stations}}
+    <div class="fuelstations">
+      <p>Tankstelle: {{this.brand}} {{this.street}} ({{this.place}})</p>
+      <p>Entfernung (km): {{this.dist}}</p>
+      <p>Benzin (E5): {{this.e5}}</p>
+      <p>Benzin (E10): {{this.e10}}</p>
+      <p>Diesel: {{this.diesel}}</p>
+    </div>
+    {{/each}}
+</section>

@@ -4,6 +4,8 @@ const router = express.Router();
 const Car = require("../models/car");
 const mongoose = require("mongoose");
 //const multer = require("multer");
+const APIHandler = require("../APIhandler");
+const outerAPIs = new APIHandler(); 
 
 const uploadCloud = require("../config/cloudinary.js");
 //const upload = multer({ dest: './public/upload/' });
@@ -163,7 +165,8 @@ router.get("/myaccount", loginCheck(), (req, res, next) => {
 
 router.get("/home-main", loginCheck(), (req, res) => {
   const loggedUser = req.session.user;
-  res.render("auth/home-main", { user: loggedUser });
+  const fuelAPIKey = process.env.FUEL_API_KEY;
+  res.render("auth/home-main", { user: loggedUser, fuelAPIKey: fuelAPIKey });
 });
 
 router.get("/car-add", loginCheck(), (req, res) => {
@@ -263,6 +266,26 @@ router.post("/remove/:carId", loginCheck(), (req, res, next) => {
     .catch(err => {
       next(err);
     });
+});
+
+router.get("/myaccount/getGeoCoords", loginCheck(), async (req, res, next) => {
+  const loggedUser = req.session.user;
+  const plz = req.query.plz;
+  let geoResult = {};
+  try {
+    geoResult = await outerAPIs.getGeoCoords(plz);
+  } catch (error) {
+    next(error);
+  }
+
+  const fuelAPIKey = process.env.FUEL_API_KEY;
+  let fuelStationResult = {};
+  try {
+    fuelStationResult = await outerAPIs.getFuelStations(geoResult.latt, geoResult.longt, fuelAPIKey);
+  } catch (error) {
+    next(error);
+  }
+  res.render("auth/home-main", { user: loggedUser, fuelAPIKey: fuelAPIKey, plz: plz, longitude: geoResult.longt, latitude: geoResult.latt, fuelStationResult: fuelStationResult });
 });
 
 module.exports = router;
