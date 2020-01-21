@@ -44,9 +44,18 @@
         <input type="text" name="leistung_ps" id="leistung_ps" value="{{ car.leistung_ps }}">
       </div>
       <div>
-        <label for="erstzulassung">Erstzulassung:</label>
-        <input type="text" name="erstzulassung" id="erstzulassung"
-          value="{{ car.erstzulassung_monat }}/{{ car.erstzulassung_jahr }}">
+        <label for="erstzulassung_monat">Erstzulassung Monat:</label>
+        <input type="text" name="erstzulassung_monat" id="erstzulassung_monat"
+          value="{{ car.erstzulassung_monat }}">
+      </div>
+      <div>
+        <label for="erstzulassung_jahr">Erstzulassung Jahr:</label>
+        <input type="text" name="erstzulassung_jahr" id="erstzulassung_jahr"
+          value="{{ car.erstzulassung_jahr }}">
+      </div>
+      <div>
+        <label for="kauf_jahr">Kauf Jahr:</label>
+        <input type="text" name="kauf_jahr" id="kauf_jahr" value="{{ car.kauf_jahr }}">
       </div>
       <div>
         <label for="kaufpreis">Kaufpreis:</label>
@@ -60,6 +69,11 @@
         <label for="kilometerstand_aktuell">aktueller Kilometerstand:</label>
         <input type="text" name="kilometerstand_aktuell" id="kilometerstand_aktuell"
           value="{{ car.kilometerstand_aktuell }}">
+      </div>
+      <div>
+        <label for="kilometerkosten">aktuelle Kosten pro Kilometer:</label>
+        <input type="text" name="kilometerkosten" id="kilometerkosten"
+          value="{{ car.kilometerkosten }}">
       </div>
       <button type="submit" id="update-car-details" style="display: none">Änderungen Speichern</button>
     </fieldset>
