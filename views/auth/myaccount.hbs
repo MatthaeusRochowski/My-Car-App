@@ -26,10 +26,10 @@
 <a href="/car-add"><button type="submit" class="add-button">Fahrzeug hinzufügen</button></a>
 <h2>Meine Fahrzeuge</h2>
 
-<div class="container-overview">
+<section id="car-overview">
     <div class="cards-container">
         {{#each this.car}}
         {{> carPartial }}
         {{/each}}
     </div>
-</div>
+</section>
