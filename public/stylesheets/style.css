@@ -23,6 +23,10 @@ h1, h2, h3, a, p {
 #main-nav li {
   color: whitesmoke; }
 
+span {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 17px; }
+
 h1 {
   font-size: 30px;
   padding-top: 8%;
@@ -40,11 +44,11 @@ h4, p {
   color: #494949; }
 
 hr {
-  height: 3px;
-  width: 30px;
+  height: 1px;
+  width: 310px;
   background: #494949;
   border: 0;
-  margin: 0 auto 40px auto; }
+  margin: 0 auto 5px auto; }
 
 /* HEADER **********************/
 header {
@@ -71,7 +75,7 @@ header nav ul a li {
 header nav ul li:hover {
   padding-top: 5px; }
 
-li, .button, .save-button, .add-button {
+li, .button, .save-button, .add-button, .neu-button {
   transition: all 300ms;
   -webkit-transition: all 300ms; }
 
@@ -160,23 +164,66 @@ form input {
 
 .cards-container {
   display: flex;
-  justify-content: center;
-  border: 3px; }
+  flex-wrap: wrap;
+  justify-content: space-evenly; }
 
 .car-partial {
-  margin-right: 20px; }
-
-.car-partial p {
+  border-radius: 5px;
+  border: 2px solid;
+  border-color: #494949;
+  margin-left: 20px;
   display: flex;
-  justify-content: space-between; }
+  flex-direction: column;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 10px; }
 
-.car-partial li {
-  float: right; }
+.p-class {
+  display: flex;
+  justify-content: space-between;
+  width: 310px; }
 
 .car-image {
   object-fit: cover;
   object-position: center;
-  height: 200px; }
+  width: 310px;
+  height: auto; }
+
+.car-img-div {
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; }
+
+.neu-button {
+  margin-top: 2px;
+  margin-right: 50px;
+  margin-left: 50px;
+  background-color: #2F4F4F;
+  color: whitesmoke;
+  border-radius: 5px;
+  border: 2px solid;
+  border-color: #494949;
+  font-size: 15px;
+  width: 200px;
+  height: 50px;
+  text-transform: uppercase;
+  justify-items: center; }
+
+.neu-button:hover {
+  background-color: #708090;
+  color: whitesmoke; }
+
+#links {
+  float: left;
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 70px; }
+
+#rechts {
+  margin-top: 20px;
+  float: right;
+  margin-right: 10px; }
 
 #form-add-car input {
   height: 30px; }
@@ -268,6 +315,85 @@ form input {
 .save-button:hover {
   background-color: #708090;
   color: whitesmoke; }
+
+/* fuel **********************/
+#datum {
+  width: 120px;
+  margin-left: 10px;
+  display: flex;
+  align-items: flex-start; }
+
+#kilometerstand {
+  width: 120px;
+  margin-right: 10px;
+  margin-left: 10px;
+  display: flex;
+  align-items: flex-start; }
+
+.litergroup {
+  display: flex;
+  margin-left: 10px;
+  align-items: flex-start; }
+
+#liter {
+  width: 70px;
+  margin-right: 10px; }
+
+#literpreis {
+  width: 70px;
+  margin-right: 10px; }
+
+/* insurance **********************/
+#name {
+  width: 300px;
+  margin-right: 10px; }
+
+#typ {
+  width: 70px;
+  margin-right: 10px; }
+
+.name {
+  display: flex;
+  margin-left: 10px;
+  align-items: flex-start; }
+
+.typ-jahr {
+  display: flex;
+  margin-left: 10px;
+  align-items: flex-start; }
+
+.km-laufleistung {
+  display: flex;
+  margin-left: 10px;
+  align-items: flex-start; }
+
+.rechnungsbetrag {
+  display: flex;
+  margin-left: 10px;
+  align-items: flex-start; }
+
+.sfk {
+  display: flex;
+  margin-left: 10px;
+  align-items: flex-start; }
+
+#betrag {
+  width: 200px; }
+
+#abschluss_kilometerstand {
+  width: 120px;
+  margin-right: 10px; }
+
+#geschaetzte_laufleistung {
+  width: 120px;
+  margin-right: 10px; }
+
+#schadensfreiheitsklasse {
+  width: 70px;
+  margin-right: 10px; }
+
+#form-insurance-add input {
+  height: 30px; }
 
 /*body {
   padding: 50px;
