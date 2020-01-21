@@ -1,27 +1,35 @@
 <!--- NAVBAR -->
 
 <header>
-        <div id="logo">
-                <a href="/home-main"><li>MyCarApp</li></a>
-        </div>
+    <div id="logo">
+        <a href="/home-main">
+            <li>MyCarApp</li>
+        </a>
+    </div>
 
-        <nav id="main-nav">
-            <ul>
-                <a href="/home-main"><li>Home</li></a>
-                <a href="/myaccount"><li>MyAccount</li></a>
-                <a href="/"><li>Logout</li></a>
-            </ul>
-        </nav>
-    </header>
+    <nav id="main-nav">
+        <ul>
+            <a href="/home-main">
+                <li>Home</li>
+            </a>
+            <a href="/myaccount">
+                <li>MyAccount</li>
+            </a>
+            <a href="/">
+                <li>Logout</li>
+            </a>
+        </ul>
+    </nav>
+</header>
 
 
+<a href="/car-add"><button type="submit" class="add-button">Fahrzeug hinzufügen</button></a>
+<h2>Meine Fahrzeuge</h2>
 
-<h1>Meine Fahrzeuge</h1>
-
-<a href="/car-add"><button type="submit">Fahrzeug hinzufügen</button></a>
-
-<div class="cards-container">
-{{#each this.car}}
-    {{> carPartial }}
-{{/each}}
+<div class="container-overview">
+    <div class="cards-container">
+        {{#each this.car}}
+        {{> carPartial }}
+        {{/each}}
+    </div>
 </div>

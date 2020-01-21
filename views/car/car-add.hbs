@@ -1,56 +1,93 @@
-<h1>Neues Fahrzeug hinzufügen</h1>
+<!--- NAVBAR -->
 
-<h2>Fahrzeug Daten</h2>
+<header>
+        <div id="logo">
+                <a href="/home-main"><li>MyCarApp</li></a>
+        </div>
+
+        <nav id="main-nav">
+            <ul>
+                <a href="/home-main"><li>Home</li></a>
+                <a href="/myaccount"><li>MyAccount</li></a>
+                <a href="/"><li>Logout</li></a>
+            </ul>
+        </nav>
+    </header>
+
+
+<section>
+<h2>Neues Fahrzeug hinzufügen</h2>
 <div>
   <form action="/car-add" method="POST" id="form-add-car" enctype="multipart/form-data">
-    <div>
+    <div class="group0">
+      <div>
       <label for="kennzeichen">Kennzeichen:</label>
       <input type="text" name="kennzeichen" id="kennzeichen">
-    </div>
-    <div>
-      <label for="hersteller">Hersteller:</label>
-      <input type="text" name="hersteller" id="hersteller">
-    </div>
-    <div>
-      <label for="modell">Modell:</label>
-      <input type="text" name="modell" id="modell">
-    </div>
-    <div>
-      <label for="hsn">HSN:</label>
-      <input type="text" name="hsn" id="hsn">
-    </div>
-    <div>
-      <label for="tsn">TSN:</label>
-      <input type="text" name="tsn" id="tsn">
-    </div>
-    <div>
-      <label for="kraftstoff">Kraftstoff:</label>
-      <input type="text" name="kraftstoff" id="kraftstoff">
-    </div>
-    <div>
-      <label for="leistung_ps">Leistung in PS:</label>
-      <input type="text" name="leistung_ps" id="leistung_ps">
-    </div>
-    <div>
-      <p>Erstzulassung: </p>
-      <label for="erstzulassung_monat">Monat:</label>
-      <input type="text" name="erstzulassung_monat" id="erstzulassung_monat">
-      <label for="erstzulassung_jahr">Jahr:</label>
-      <input type="text" name="erstzulassung_jahr" id="erstzulassung_jahr">
-    </div>
-    <div>
-      <label for="kaufpreis">Kaufpreis:</label>
-      <input type="text" name="kaufpreis" id="kaufpreis">
-    </div>
-    <div>
-      <label for="kilometerstand_kauf">Kilometerstand bei Kauf:</label>
-      <input type="text" name="kilometerstand_kauf" id="kilometerstand_kauf">
-    </div>
-    <div>
-      <label for="autobild" type="text" name="name">Auto Bild hochladen:</label>
-      <input type="file" name="autobild" />
+      </div>
     </div>
 
-    <button type="submit">Speichern</button>
+    <div class="group1">
+      <div>
+        <label for="hersteller">Hersteller:</label>
+        <input type="text" name="hersteller" id="hersteller">
+      </div>
+      <div>
+        <label for="modell">Modell:</label>
+        <input type="text" name="modell" id="modell">
+      </div>
+      <div>
+        <label for="hsn">HSN:</label>
+        <input type="text" name="hsn" id="hsn">
+      </div>
+      <div>
+        <label for="tsn">TSN:</label>
+        <input type="text" name="tsn" id="tsn">
+      </div>
+    </div>
+
+    <div class="group2">
+      <div>
+        <label for="kraftstoff">Kraftstoff:</label>
+        <input type="text" name="kraftstoff" id="kraftstoff">
+      </div>
+      <div>
+        <label for="leistung_ps">Leistung in PS:</label>
+        <input type="text" name="leistung_ps" id="leistung_ps">
+      </div>
+    </div>
+    <br>
+ <li>Erstzulassung: </li><br>
+    <div class="group3">
+      <div>
+      <label for="erstzulassung_monat">Monat:</label>
+      <input type="text" name="erstzulassung_monat" id="monat">
+      </div>
+      <div>
+      <label for="erstzulassung_jahr">Jahr:</label>
+      <input type="text" name="erstzulassung_jahr" id="jahr">
+      </div>
+    </div>
+    
+
+    <div class="group4">
+      <div>
+        <label for="kaufpreis">Kaufpreis:</label>
+        <input type="text" name="kaufpreis" id="kaufpreis">
+      </div>
+      <div>
+        <label for="kilometerstand_kauf">Kilometerstand bei Kauf:</label>
+        <input type="text" name="kilometerstand_kauf" id="kilometerstand_kauf">
+      </div>
+    </div>
+    
+  <li>Auto Bild hochladen:</li><br>
+    <div class="group5">
+      
+      <input type="file" name="autobild" id="autobild">
+    </div>
+
+    <button type="submit" class="save-button">Speichern</button>
   </form>
 </div>
+
+</section>

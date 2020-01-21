@@ -87,7 +87,7 @@ header nav ul li:hover {
   padding-top: 5px;
 }
 
-li, .button
+li, .button, .save-button, .add-button
 {transition: all 300ms; -webkit-transition: all 300ms;}
 
 #logo {
@@ -173,10 +173,34 @@ form input {
 
 /* MYACCOUNT **********************/
 
+.add-button {
+  float: right;
+  margin-right: 10px;
+  margin-top: 70px;
+  background-color: #2F4F4F;
+  color: whitesmoke;
+  border-radius: 5px;
+  border: 2px solid;
+  border-color: #494949;
+  font-size: 15px;
+  width: 200px;
+  height: 50px;
+  text-transform: uppercase;
+}
+
+.add-button:hover {
+  background-color: #708090;
+  color: whitesmoke;
+}
+
 .cards-container {
   display: flex;
-  padding: 10% 20%;
-  justify-content: space-around;
+  
+  justify-content: center;
+  border: 3px;
+}
+.car-partial{
+  margin-right: 20px;  
 }
 
 .car-partial p {
@@ -196,6 +220,116 @@ form input {
 }
 
 
+#form-add-car input {
+  height: 30px;
+}
+
+#form-add-car li {
+  float: left;
+  margin-left: 10px;
+  
+}
+
+#kennzeichen {
+  width: 120px;
+}
+
+#hersteller {
+  width: 120px;
+  margin-right: 10px;
+}
+
+#modell {
+  width: 150px;
+  margin-right: 10px;
+}
+#hsn {
+  width: 70px;
+  margin-right: 10px;
+}
+
+#tsn{
+  width: 70px;
+}
+
+#kraftstoff {
+  width: 150px;
+  margin-right: 10px;
+}
+
+#leistung_ps {
+  width: 70px;
+}
+
+#monat {
+  width: 120px;
+  margin-right: 10px;
+}
+
+#jahr {
+  width: 70px;
+}
+
+#kaufpreis {
+  width: 120px;
+  margin-right: 10px;
+}
+
+.group0 {
+  display: flex;
+  margin-left: 10px;
+  align-items: flex-start;
+}
+
+.group1 {
+  display: flex;
+  margin-left: 10px;
+  align-items: flex-start;
+}
+
+.group2 {
+  display: flex;
+  margin-left: 10px;
+  align-items: flex-start;
+}
+
+.group3 {
+  display: flex;
+  margin-left: 10px;
+  align-items: flex-start;
+}
+
+.group4 {
+  display: flex;
+  margin-left: 10px;
+  align-items: flex-start;
+}
+
+.group5 {
+  display: flex;
+  margin-left: 10px;
+  align-items: flex-start;
+}
+
+.save-button {
+  float: left;
+  margin-left: 10px;
+  margin-top: 20px;
+  background-color: #2F4F4F;
+  color: whitesmoke;
+  border-radius: 5px;
+  border: 2px solid;
+  border-color: #494949;
+  font-size: 15px;
+  width: 200px;
+  height: 50px;
+  text-transform: uppercase;
+}
+
+.save-button:hover {
+  background-color: #708090;
+  color: whitesmoke;
+}
 
 
 /*body {
