@@ -319,21 +319,27 @@ form input {
 /* fuel **********************/
 #datum {
   width: 120px;
-  margin-right: 10px; }
+  margin-left: 10px;
+  display: flex;
+  align-items: flex-start; }
 
 #kilometerstand {
   width: 120px;
-  margin-right: 10px; }
+  margin-right: 10px;
+  margin-left: 10px;
+  display: flex;
+  align-items: flex-start; }
+
+.litergroup {
+  display: flex;
+  margin-left: 10px;
+  align-items: flex-start; }
 
 #liter {
   width: 70px;
   margin-right: 10px; }
 
 #literpreis {
-  width: 70px;
-  margin-right: 10px; }
-
-#betrag {
   width: 70px;
   margin-right: 10px; }
 
@@ -346,6 +352,34 @@ form input {
   width: 70px;
   margin-right: 10px; }
 
+.name {
+  display: flex;
+  margin-left: 10px;
+  align-items: flex-start; }
+
+.typ-jahr {
+  display: flex;
+  margin-left: 10px;
+  align-items: flex-start; }
+
+.km-laufleistung {
+  display: flex;
+  margin-left: 10px;
+  align-items: flex-start; }
+
+.rechnungsbetrag {
+  display: flex;
+  margin-left: 10px;
+  align-items: flex-start; }
+
+.sfk {
+  display: flex;
+  margin-left: 10px;
+  align-items: flex-start; }
+
+#betrag {
+  width: 200px; }
+
 #abschluss_kilometerstand {
   width: 120px;
   margin-right: 10px; }
@@ -357,6 +391,9 @@ form input {
 #schadensfreiheitsklasse {
   width: 70px;
   margin-right: 10px; }
+
+#form-insurance-add input {
+  height: 30px; }
 
 /*body {
   padding: 50px;

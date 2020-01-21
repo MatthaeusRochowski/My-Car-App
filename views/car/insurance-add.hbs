@@ -15,15 +15,20 @@
     </header>
 
 <!--insurance add form - gets car as input-->
-<h1>Versicherung hinzufügen</h1>
 
-<h2>Versicherungs-Daten</h2>
+<section>
+<h2>Versicherung hinzufügen</h2>
 <div>
   <form action="/myaccount/insurance/add/{{carId}}" method="POST" id="form-insurance-add">
+
+  <div class="name">
     <div>
       <label for="name">Name:</label>
       <input type="text" name="name" id="name">
     </div>
+  </div>
+
+  <div class="typ-jahr">
     <div>
       <label for="typ">Typ:</label>
       <input type="text" name="typ" id="typ">
@@ -32,6 +37,9 @@
       <label for="jahr">Jahr:</label>
       <input type="text" name="jahr" id="jahr">
     </div>
+  </div>
+
+  <div class="km-laufleistung">
     <div>
       <label for="abschluss_kilometerstand">Abschluss Kilometerstand:</label>
       <input type="text" name="abschluss_kilometerstand" id="abschluss_kilometerstand">
@@ -40,14 +48,23 @@
       <label for="geschaetzte_laufleistung">Geschätzte Laufleistung:</label>
       <input type="text" name="geschaetzte_laufleistung" id="geschaetzte_laufleistung">
     </div>
-    <div>
+  </div>
+
+    <div class="rechnungsbetrag">
+      <div>
       <label for="betrag">Rechnungsbetrag:</label>
       <input type="text" name="betrag" id="betrag">
-    </div>
-    <div>
+      </div>
+   </div>
+  
+    <div class="sfk">
+      <div>
       <label for="schadensfreiheitsklasse">Schadensfreiheitsklasse:</label>
       <input type="text" name="schadensfreiheitsklasse" id="schadensfreiheitsklasse">
+      </div>
     </div>
+  
     <button type="submit" class="save-button">Speichern</button>   
   </form>
 </div>
+</section>
