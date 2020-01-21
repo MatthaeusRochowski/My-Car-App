@@ -210,6 +210,7 @@ const carSchema = new Schema({
   leistung_ps: { type: Number }, //140
   erstzulassung_monat: { type: Number }, //1 (Januar)
   erstzulassung_jahr: { type: Number, min: 1900 }, //2020
+  kauf_jahr: { type: Number, min: 1900 }, //2020
   kaufpreis: { type: Number }, //15000
   kilometerstand_kauf: { type: Number, min: 0 }, //0
   kilometerstand_aktuell: { type: Number }, //12000 (updated by most recent kilometerstand_ende)
