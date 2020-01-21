@@ -173,7 +173,7 @@ form input {
 .car-partial li {
   float: right; }
 
-.car-partial img {
+.car-image {
   object-fit: cover;
   object-position: center;
   height: 200px; }

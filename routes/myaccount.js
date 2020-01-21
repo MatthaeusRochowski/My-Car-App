@@ -5,7 +5,7 @@ const Car = require("../models/car");
 const mongoose = require("mongoose");
 //const multer = require("multer");
 
-const uploadCloud = require('../config/cloudinary.js');
+const uploadCloud = require("../config/cloudinary.js");
 //const upload = multer({ dest: './public/upload/' });
 
 /*  */
@@ -172,57 +172,62 @@ router.get("/car-add", loginCheck(), (req, res) => {
 });
 
 router.post("/car-add", [uploadCloud.single("autobild"), loginCheck()], (req, res, next) => {
-  const loggedUser = req.session.user;
-  //console.log(loggedUser);
-  const eigner_ref = loggedUser._id;
-  const {
-    kennzeichen,
-    hersteller,
-    modell,
-    hsn,
-    tsn,
-    kraftstoff,
-    leistung_ps,
-    erstzulassung_monat,
-    erstzulassung_jahr,
-    kauf_jahr,
-    kaufpreis,
-    kilometerstand_kauf
-  } = req.body;
-  const kilometerstand_aktuell = kilometerstand_kauf;
-  let bild = "/images/DefaultPlatzhalter.png";
+    const loggedUser = req.session.user;
+    //console.log(loggedUser);
+    const eigner_ref = loggedUser._id;
+    const {
+      kennzeichen,
+      hersteller,
+      modell,
+      hsn,
+      tsn,
+      kraftstoff,
+      leistung_ps,
+      erstzulassung_monat,
+      erstzulassung_jahr,
+      kauf_jahr,
+      kaufpreis,
+      kilometerstand_kauf
+    } = req.body;
+    const kilometerstand_aktuell = kilometerstand_kauf;
+    let bild = "/images/DefaultPlatzhalter.png";
 
-  if (req.file) bild = req.file.url;
-  
-  Car.create({
-    kennzeichen,
-    hersteller,
-    modell,
-    hsn,
-    tsn,
-    kraftstoff,
-    leistung_ps,
-    erstzulassung_monat,
-    erstzulassung_jahr,
-    kauf_jahr,
-    kaufpreis,
-    kilometerstand_kauf,
-    kilometerstand_aktuell,
-    eigner_ref,
-    bild
-  })
-    .then(() => {
-      res.redirect("/myaccount");      
+    if (req.file) bild = req.file.url;
+
+    Car.create({
+      kennzeichen,
+      hersteller,
+      modell,
+      hsn,
+      tsn,
+      kraftstoff,
+      leistung_ps,
+      erstzulassung_monat,
+      erstzulassung_jahr,
+      kauf_jahr,
+      kaufpreis,
+      kilometerstand_kauf,
+      kilometerstand_aktuell,
+      eigner_ref,
+      bild
     })
-    .catch(err => {
-      next(err);
-    });
-});
+      .then(() => {
+        res.redirect("/myaccount");
+      })
+      .catch(err => {
+        next(err);
+      });
+  }
+);
 
 //Edit Car Details
 /* prefixed with /myaccount in app.js*/
-router.post("/edit/:carId", loginCheck(), (req, res, next) => {
+router.post("/edit/:carId", [uploadCloud.single("autobild"), loginCheck()], (req, res, next) => {
   const carId = req.params.carId;
+
+  let bild;
+  if (req.file) bild = req.file.url;
+  //console.log('neues Autobild 1', bild);
 
   const { kennzeichen, hersteller, modell, hsn, tsn, kraftstoff, 
     leistung_ps, erstzulassung_monat, erstzulassung_jahr, kauf_jahr, kaufpreis, 
@@ -230,10 +235,11 @@ router.post("/edit/:carId", loginCheck(), (req, res, next) => {
 
   const updatedCarDetails = { kennzeichen, hersteller, modell, hsn, tsn, kraftstoff, 
     leistung_ps, erstzulassung_monat, erstzulassung_jahr, kauf_jahr, kaufpreis, 
-    kilometerstand_kauf, kilometerstand_aktuell };
+    kilometerstand_kauf, kilometerstand_aktuell, bild };
 
   Car.findByIdAndUpdate(carId, updatedCarDetails )
     .then(() => {
+      //console.log('neues Autobild ', bild);
       res.redirect(`/myaccount/car-details/${carId}`);
     })
     .catch(err => {
@@ -245,18 +251,18 @@ router.post("/edit/:carId", loginCheck(), (req, res, next) => {
 router.post("/remove/:carId", loginCheck(), (req, res, next) => {
   const loggedUser = req.session.user;
   const carId = req.params.carId;
-  //console.log(carId);
-  Car.findByIdAndRemove( { _id: mongoose.Types.ObjectId(carId) } )
-  .then(() => {
-    Car.find({ eigner_ref: mongoose.Types.ObjectId(loggedUser._id) })
-    .populate("eigner_ref")
-    .then(myCars => {
-      res.render("auth/myaccount", { user: loggedUser, car: myCars });
+  console.log(carId);
+  Car.findByIdAndRemove({ _id: mongoose.Types.ObjectId(carId) })
+    .then(() => {
+      Car.find({ eigner_ref: mongoose.Types.ObjectId(loggedUser._id) })
+        .populate("eigner_ref")
+        .then(myCars => {
+          res.render("auth/myaccount", { user: loggedUser, car: myCars });
+        });
+    })
+    .catch(err => {
+      next(err);
     });
-  })
-  .catch(err => {
-    next(err);
-  });
 });
 
 module.exports = router;
