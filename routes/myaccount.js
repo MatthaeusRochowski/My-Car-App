@@ -176,6 +176,4 @@ router.post("/remove/:carId", loginCheck(), (req, res, next) => {
   });
 });
 
-
-
 module.exports = router;
