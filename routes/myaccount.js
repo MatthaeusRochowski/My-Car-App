@@ -5,7 +5,7 @@ const Car = require("../models/car");
 const mongoose = require("mongoose");
 //const multer = require("multer");
 
-const uploadCloud = require('../config/cloudinary.js');
+const uploadCloud = require("../config/cloudinary.js");
 //const upload = multer({ dest: './public/upload/' });
 
 /*  */
@@ -66,10 +66,24 @@ router.get("/myaccount", loginCheck(), (req, res, next) => {
         //console.log(versicherungsbuchSum);
         //console.log(steuerbuchSum);
         //console.log((tankbuchSum+werkstattbuchSum+versicherungsbuchSum+steuerbuchSum)/fahrtenbuchKm);
-        if ((fahrtenbuchKm > 0)&&((tankbuchSum+werkstattbuchSum+versicherungsbuchSum+steuerbuchSum) > 0)) {
-          car.kilometerkosten = Math.round(((tankbuchSum+werkstattbuchSum+versicherungsbuchSum+steuerbuchSum)/(fahrtenbuchKm))*100)/100;
-        }
-        else {
+        if (
+          fahrtenbuchKm > 0 &&
+          tankbuchSum +
+            werkstattbuchSum +
+            versicherungsbuchSum +
+            steuerbuchSum >
+            0
+        ) {
+          car.kilometerkosten =
+            Math.round(
+              ((tankbuchSum +
+                werkstattbuchSum +
+                versicherungsbuchSum +
+                steuerbuchSum) /
+                fahrtenbuchKm) *
+                100
+            ) / 100;
+        } else {
           car.kilometerkosten = 0;
         }
         car.save();
@@ -89,10 +103,61 @@ router.get("/car-add", loginCheck(), (req, res) => {
   res.render("car/car-add", { user: loggedUser });
 });
 
-router.post("/car-add", [uploadCloud.single("autobild"), loginCheck()], (req, res, next) => {
-  const loggedUser = req.session.user;
-  console.log(loggedUser);
-  const eigner_ref = loggedUser._id;
+router.post(
+  "/car-add",
+  [uploadCloud.single("autobild"), loginCheck()],
+  (req, res, next) => {
+    const loggedUser = req.session.user;
+    console.log(loggedUser);
+    const eigner_ref = loggedUser._id;
+    const {
+      kennzeichen,
+      hersteller,
+      modell,
+      hsn,
+      tsn,
+      kraftstoff,
+      leistung_ps,
+      erstzulassung_monat,
+      erstzulassung_jahr,
+      kaufpreis,
+      kilometerstand_kauf
+    } = req.body;
+    const kilometerstand_aktuell = kilometerstand_kauf;
+    let bild = "/images/DefaultPlatzhalter.png";
+
+    if (req.file) bild = req.file.url;
+
+    Car.create({
+      kennzeichen,
+      hersteller,
+      modell,
+      hsn,
+      tsn,
+      kraftstoff,
+      leistung_ps,
+      erstzulassung_monat,
+      erstzulassung_jahr,
+      kaufpreis,
+      kilometerstand_kauf,
+      kilometerstand_aktuell,
+      eigner_ref,
+      bild
+    })
+      .then(() => {
+        res.redirect("/myaccount");
+      })
+      .catch(err => {
+        next(err);
+      });
+  }
+);
+
+//Edit Car Details
+/* prefixed with /myaccount in app.js*/
+router.post("/edit/:carId", [uploadCloud.single("autobild"), loginCheck()], (req, res, next) => {
+  const carId = req.params.carId;
+
   const {
     kennzeichen,
     hersteller,
@@ -104,15 +169,15 @@ router.post("/car-add", [uploadCloud.single("autobild"), loginCheck()], (req, re
     erstzulassung_monat,
     erstzulassung_jahr,
     kaufpreis,
-    kilometerstand_kauf
+    kilometerstand_kauf,
+    kilometerstand_aktuell
   } = req.body;
-  const kilometerstand_aktuell = kilometerstand_kauf;
-  let bild = "/images/DefaultPlatzhalter.png";
 
+  let bild;
   if (req.file) bild = req.file.url;
+  console.log('neues Autobild 1', bild);
 
-  
-  Car.create({
+  const updatedCarDetails = {
     kennzeichen,
     hersteller,
     modell,
@@ -125,32 +190,12 @@ router.post("/car-add", [uploadCloud.single("autobild"), loginCheck()], (req, re
     kaufpreis,
     kilometerstand_kauf,
     kilometerstand_aktuell,
-    eigner_ref,
     bild
-  })
+  };
+
+  Car.findByIdAndUpdate(carId, updatedCarDetails)
     .then(() => {
-      res.redirect("/myaccount");      
-    })
-    .catch(err => {
-      next(err);
-    });
-});
-
-//Edit Car Details
-/* prefixed with /myaccount in app.js*/
-router.post("/edit/:carId", loginCheck(), (req, res, next) => {
-  const carId = req.params.carId;
-
-  const { kennzeichen, hersteller, modell, hsn, tsn, kraftstoff, 
-    leistung_ps, erstzulassung_monat, erstzulassung_jahr, kaufpreis, 
-    kilometerstand_kauf, kilometerstand_aktuell } = req.body;
-
-  const updatedCarDetails = { kennzeichen, hersteller, modell, hsn, tsn, kraftstoff, 
-    leistung_ps, erstzulassung_monat, erstzulassung_jahr, kaufpreis, 
-    kilometerstand_kauf, kilometerstand_aktuell };
-
-  Car.findByIdAndUpdate(carId, updatedCarDetails )
-    .then(() => {
+      console.log('neues Autobild ', bild);
       res.redirect(`/myaccount/car-details/${carId}`);
     })
     .catch(err => {
@@ -163,19 +208,17 @@ router.post("/remove/:carId", loginCheck(), (req, res, next) => {
   const loggedUser = req.session.user;
   const carId = req.params.carId;
   console.log(carId);
-  Car.findByIdAndRemove( { _id: mongoose.Types.ObjectId(carId) } )
-  .then(() => {
-    Car.find({ eigner_ref: mongoose.Types.ObjectId(loggedUser._id) })
-    .populate("eigner_ref")
-    .then(myCars => {
-      res.render("auth/myaccount", { user: loggedUser, car: myCars });
+  Car.findByIdAndRemove({ _id: mongoose.Types.ObjectId(carId) })
+    .then(() => {
+      Car.find({ eigner_ref: mongoose.Types.ObjectId(loggedUser._id) })
+        .populate("eigner_ref")
+        .then(myCars => {
+          res.render("auth/myaccount", { user: loggedUser, car: myCars });
+        });
+    })
+    .catch(err => {
+      next(err);
     });
-  })
-  .catch(err => {
-    next(err);
-  });
 });
-
-
 
 module.exports = router;
