@@ -4,17 +4,28 @@
     <button id="car-remove-button">Fahrzeug entfernen</button>
   </div>
 </form>
+<br>
 
 
 <h2>Fahrzeug Daten für {{ car.kennzeichen }} </h2>
+
 <div>
   <button id="car-edit-button">Fahrzeug Daten Ändern</button>
-  <br>
+</div>
+<br>
 
-  <form action="/edit/{{ car._id }}" method="POST" id="car-edit-form" enctype="multipart/form-data">
+<div>
+  <form action="/newpicture/{{ car._id }}" method="POST" id="car-edit-form" enctype="multipart/form-data">
+    <img src="{{car.bild}}" class="car-image" alt="Autobild" /><br>
+    <input type="file" name="autobild" id="autobild" style="display: none">
+    <button type="submit" id="update-car-picture" style="display: none">Bild Speichern</button>
+  </form>
+</div>
+
+
+<div>
+  <form action="/edit/{{ car._id }}" method="POST" id="car-edit-form">
     <fieldset disabled id="car-edit-fieldset">
-      <img src="{{car.bild}}" class="car-image" alt="Autobild" /><br>
-        <input type="file" name="autobild" id="autobild" style="display: none">
       <div>
         <label for="kennzeichen">Kennzeichen:</label>
         <input type="text" name="kennzeichen" id="kennzeichen" value="{{ car.kennzeichen }}">
