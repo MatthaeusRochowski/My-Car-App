@@ -17,5 +17,17 @@ var storage = cloudinaryStorage({
   }
 });
 
+var storageInvoice = cloudinaryStorage({
+  cloudinary: cloudinary,
+  folder: "My-Service-Invoices", // The name of the folder in cloudinary
+  allowedFormats: ["pdf", "jpg", "png"],
+  filename: function(req, file, cb) {
+    cb(null, file.originalname); // The file on cloudinary would have the same name as the original file name
+  }
+});
+
 const uploadCloud = multer({ storage: storage });
+const uploadInvoice = multer ({ storage: storageInvoice });
+
 module.exports = uploadCloud;
+module.exports = uploadInvoice;
