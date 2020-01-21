@@ -15,15 +15,21 @@
     </header>
 
 <!--service add form - gets car as input-->
-<h1>Werkstatt-Rechnung hinzufügen</h1>
 
-<h2>Werkstatt-Rechnungs-Daten</h2>
+<section>
+<h2>Werkstatt-Rechnung hinzufügen</h2>
+
 <div>
   <form action="/myaccount/service/add/{{carId}}" method="POST" id="form-service-add" enctype="multipart/form-data">
+
+  <div class="datum">
     <div>
       <label for="datum">Datum:</label>
       <input type="text" name="datum" id="datum" value="{{heute}}">
     </div>
+  </div>
+
+  <div class="km-reparatur">
     <div>
       <label for="kilometerstand">Kilometerstand:</label>
       <input type="text" name="kilometerstand" id="kilometerstand">
@@ -32,14 +38,23 @@
       <label for="reparaturposten">Reparaturposten:</label>
       <input type="text" name="reparaturposten" id="reparaturposten">
     </div>
+  </div>
+
+  <div class="betrag">
     <div>
       <label for="betrag">Rechnungsbetrag:</label>
       <input type="text" name="betrag" id="betrag">
     </div>
+  </div>    
+
+<li>Rechnung hochladen:</li><br>
+  <div class="rechnung">
     <div>
-      <label for="rechnung">Rechnung:</label>
       <input type="file" name="rechnung" id="rechnung">
     </div>
-    <button type="submit">Speichern</button>   
+  </div>
+
+    <button type="submit" class="save-button">Speichern</button>   
   </form>
 </div>
+</section>

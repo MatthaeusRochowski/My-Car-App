@@ -1,11 +1,27 @@
-<h1>Fahrzeug Details</h1>
-<form action="/remove/{{ car._id }}" method="POST" id="car-remove-form">
+<!--- NAVBAR -->
+
+<header>
+        <div id="logo">
+                <a href="/home-main"><li>MyCarApp</li></a>
+        </div>
+
+        <nav id="main-nav">
+            <ul>
+                <a href="/home-main"><li>Home</li></a>
+                <a href="/myaccount"><li>MyAccount</li></a>
+                <a href="/"><li>Logout</li></a>
+            </ul>
+        </nav>
+    </header>
+
+
+<section>
+  <form action="/remove/{{ car._id }}" method="POST" id="car-remove-form">
   <div>
     <button id="car-remove-button">Fahrzeug entfernen</button>
   </div>
 </form>
 <br>
-
 
 <h2>Fahrzeug Daten für {{ car.kennzeichen }} </h2>
 
@@ -22,14 +38,17 @@
   </form>
 </div>
 
-
 <div>
   <form action="/edit/{{ car._id }}" method="POST" id="car-edit-form">
     <fieldset disabled id="car-edit-fieldset">
+    <div class="group0">
       <div>
         <label for="kennzeichen">Kennzeichen:</label>
         <input type="text" name="kennzeichen" id="kennzeichen" value="{{ car.kennzeichen }}">
       </div>
+    </div>  
+
+    <div class="group1">  
       <div>
         <label for="hersteller">Hersteller:</label>
         <input type="text" name="hersteller" id="hersteller" value="{{ car.hersteller }}">
@@ -46,6 +65,9 @@
         <label for="tsn">TSN:</label>
         <input type="text" name="tsn" id="tsn" value="{{ car.tsn }}">
       </div>
+    </div>  
+
+    <div class="group2">
       <div>
         <label for="kraftstoff">Kraftstoff:</label>
         <input type="text" name="kraftstoff" id="kraftstoff" value="{{ car.kraftstoff }}">
@@ -54,16 +76,23 @@
         <label for="leistung_ps">Leistung in PS:</label>
         <input type="text" name="leistung_ps" id="leistung_ps" value="{{ car.leistung_ps }}">
       </div>
+    </div>  
+
+    <li>Erstzulassung: </li><br>
+    <div class="group3">
       <div>
-        <label for="erstzulassung_monat">Erstzulassung Monat:</label>
+        <label for="erstzulassung_monat">Monat:</label>
         <input type="text" name="erstzulassung_monat" id="erstzulassung_monat"
           value="{{ car.erstzulassung_monat }}">
       </div>
       <div>
-        <label for="erstzulassung_jahr">Erstzulassung Jahr:</label>
+        <label for="erstzulassung_jahr">Jahr:</label>
         <input type="text" name="erstzulassung_jahr" id="erstzulassung_jahr"
           value="{{ car.erstzulassung_jahr }}">
       </div>
+    </div>
+
+    <div class="group4">  
       <div>
         <label for="kauf_jahr">Kauf Jahr:</label>
         <input type="text" name="kauf_jahr" id="kauf_jahr" value="{{ car.kauf_jahr }}">
@@ -76,6 +105,9 @@
         <label for="kilometerstand_kauf">Kilometerstand bei Kauf:</label>
         <input type="text" name="kilometerstand_kauf" id="kilometerstand_kauf" value="{{ car.kilometerstand_kauf }}">
       </div>
+    </div>
+
+    <div class="group-aktuell">  
       <div>
         <label for="kilometerstand_aktuell">aktueller Kilometerstand:</label>
         <input type="text" name="kilometerstand_aktuell" id="kilometerstand_aktuell"
@@ -86,11 +118,14 @@
         <input type="text" name="kilometerkosten" id="kilometerkosten"
           value="{{ car.kilometerkosten }}">
       </div>
+    </div>  
       <button type="submit" id="update-car-details" style="display: none">Änderungen Speichern</button>
     </fieldset>
   </form>
 </div>
+</section>
 
+<section>
 <h2>Fahrtenbuch</h2>
 <div>
 
@@ -105,7 +140,9 @@
   <a href="/myaccount/logbook/add/{{ car._id }}">Neue Fahrt</a>
 
 </div>
+</section>
 
+<section>
 <h2>Tankbuch</h2>
 <div>
   {{#each car.tankbuch}}
@@ -118,7 +155,9 @@
   <br><br>
   <a href="/myaccount/fuelbook/add/{{ car._id }}">Tanken</a>
 </div>
+</section>
 
+<section>
 <h2>Werkstatt Buch</h2>
 <div>
   {{#each car.werkstattbuch}}
@@ -131,7 +170,9 @@
   <br><br>
   <a href="/myaccount/service/add/{{ car._id }}">Werkstatt-Rechnung hinzufügen</a>
 </div>
+</section>
 
+<section>
 <h2>Versicherung</h2>
 <div>
   {{#each car.versicherungsbuch}}
@@ -144,7 +185,9 @@
   <br><br>
   <a href="/myaccount/insurance/add/{{ car._id }}">Versicherung hinzufügen</a>
 </div>
+</section>
 
+<section>
 <h2>Kfz-Steuer</h2>
 <div>
   {{#each car.steuerbuch}}
@@ -157,5 +200,6 @@
   <br><br>
   <a href="/myaccount/tax/add/{{ car._id }}">Steuereintrag hinzufügen</a>
 </div>
+</section>
 
 <script src="/javascripts/editCar.js"></script>

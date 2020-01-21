@@ -91,7 +91,7 @@ header nav ul li:hover {
   padding-top: 5px;
 }
 
-li, .button, .save-button, .add-button, .neu-button
+li, .button, .save-button, .add-button, .neu-button, #car-remove-button, #car-edit-button, #update-car-picture, #update-car-details
 {transition: all 300ms; -webkit-transition: all 300ms;}
 
 #logo {
@@ -317,6 +317,7 @@ form input {
 
 #jahr {
   width: 70px;
+  margin-right: 10px;
 }
 
 #kaufpreis {
@@ -380,21 +381,17 @@ form input {
   color: whitesmoke;
 }
 
-/* fuel **********************/
+/* FUEL **********************/
 
 #datum {
   width: 120px;
   margin-left: 10px;
-  display: flex;
-  align-items: flex-start;
 }
 
 #kilometerstand {
   width: 120px;
   margin-right: 10px;
   margin-left: 10px;
-  display: flex;
-  align-items: flex-start;
 }
 
 .litergroup {
@@ -415,7 +412,7 @@ form input {
 
 
 
-/* insurance **********************/
+/* INSURANCE **********************/
 
 #name {
   width: 300px;
@@ -480,17 +477,212 @@ form input {
   height: 30px;
 }
 
+/* LOGBOOK **********************/
 
-
-
-
-
-
-/*body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+#form-log-add input {
+  height: 30px;
 }
 
-a {
-  color: #00B7FF;
-}*/
+.datum {
+  display: flex;
+  margin-left: 10px;
+  align-items: flex-start;
+}
+
+.start-end {
+  display: flex;
+  margin-left: 10px;
+  align-items: flex-start;
+}
+
+.kmstart-kmend {
+  display: flex;
+  margin-left: 10px;
+  align-items: flex-start;
+}
+
+#startort {
+  width: 200px;
+  margin-right: 10px;
+}
+
+#zielort {
+  width: 200px;
+}
+
+#kilometerstand_start {
+  width: 120px;
+  margin-right: 10px;
+}
+
+#kilometerstand_ende {
+  width: 120px;
+}
+
+/* SERVICE **********************/
+
+#form-service-add input {
+  height: 30px;
+}
+
+.km-reparatur {
+  display: flex;
+  margin-left: 10px;
+  align-items: flex-start;
+}
+
+.betrag {
+  display: flex;
+  margin-left: 10px;
+  align-items: flex-start;
+}
+
+.rechnung {
+  display: flex;
+  margin-left: 10px;
+  align-items: flex-start;
+}
+
+#form-service-add li {
+  float: left;
+  margin-left: 10px;
+}
+
+/* TAX **********************/
+
+#form-tax-add input {
+  height: 30px;
+}
+
+.tax-group {
+  display: flex;
+  margin-left: 10px;
+  align-items: flex-start;
+}
+
+/* CARDETAILS **********************/
+
+#car-remove-button{
+  float: right;
+  margin-right: 10px;
+  margin-top: 70px;
+  background-color: #2F4F4F;
+  color: whitesmoke;
+  border-radius: 5px;
+  border: 2px solid;
+  border-color: #494949;
+  font-size: 15px;
+  width: 200px;
+  height: 50px;
+  text-transform: uppercase;
+}
+  
+#car-remove-button:hover {
+  background-color: #708090;
+  color: whitesmoke;
+}
+
+#car-edit-button {
+  margin-top: 2px;
+  background-color: #2F4F4F;
+  color: whitesmoke;
+  border-radius: 5px;
+  border: 2px solid;
+  border-color: #494949;
+  font-size: 15px;
+  width: 200px;
+  height: 50px;
+  text-transform: uppercase;
+  justify-items: center;
+}
+
+#car-edit-button:hover {
+  background-color: #708090;
+  color: whitesmoke;
+}
+
+#update-car-picture {
+  margin-top: 2px;
+  background-color: #2F4F4F;
+  color: whitesmoke;
+  border-radius: 5px;
+  border: 2px solid;
+  border-color: #494949;
+  font-size: 15px;
+  width: 200px;
+  height: 50px;
+  text-transform: uppercase;
+  justify-items: center;
+}
+
+#update-car-picture:hover {
+  background-color: #708090;
+  color: whitesmoke;
+}
+
+#update-car-details {
+  float: left;
+  margin-left: 10px;
+  margin-top: 20px;
+  background-color: #2F4F4F;
+  color: whitesmoke;
+  border-radius: 5px;
+  border: 2px solid;
+  border-color: #494949;
+  font-size: 15px;
+  width: 200px;
+  height: 50px;
+  text-transform: uppercase;
+}
+
+#update-car-details:hover {
+  background-color: #708090;
+  color: whitesmoke;
+}
+
+#car-edit-form input {
+  height: 30px;
+}
+
+#car-edit-form li {
+  float: left;
+  margin-left: 10px;
+}
+
+#erstzulassung_monat {
+  width: 120px;
+  margin-right: 10px;
+}
+
+#erstzulassung_jahr {
+  width: 70px;
+}
+
+#kauf_jahr {
+  width: 70px;
+  margin-right: 10px;
+}
+
+#kilometerstand_kauf {
+  width: 120px;
+}
+
+#kilometerstand_aktuell {
+  width: 120px;
+  margin-right: 10px;
+}
+
+#kilometerkosten {
+  width: 200px;
+}
+
+.group-aktuell {
+  display: flex;
+  margin-left: 10px;
+  align-items: flex-start;
+}
+
+#car-edit-fieldset {
+  border: none;
+  margin-top: 50px;
+}
