@@ -1,7 +1,24 @@
-<div class="service-partial">
+<table>
+<tr>
+  <th>Datum</th>
+  <th>Kilometerstand</th>
+  <th>Posten</th>
+  <th>Betrag</th>
+</tr>
+<tr>
+  <td>{{ datum }}</td>
+  <td>{{ kilometerstand }}</td>
+  <td>{{ reparaturposten }}</td>
+  <td>{{ betrag }}</td>
+</tr>
+</table>
+<p><a href="{{ rechnungs_url }}"><button>Rechnung</button></a></p>
+
+<!--<div class="service-partial">
     <p>Datum: {{ datum }}</p>
     <p>Kilometerstand: {{ kilometerstand }}</p>
     <p>Posten: {{ reparaturposten }}</p>
     <p>Betrag: {{ betrag }}</p> 
-    <p><a href="{{ rechnungs_url }}"><button>Rechnung</button></a></p>
+    
 </div>
+-->

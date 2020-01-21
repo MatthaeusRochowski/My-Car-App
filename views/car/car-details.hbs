@@ -132,12 +132,12 @@
   {{#each car.fahrtenbuch}}
   {{> logPartial }}
   <br>
-  <a href="/myaccount/logbook/edit?carId={{ ../car._id }}&logbookId={{ this._id }}">Eintrag ändern</a>
+  <a href="/myaccount/logbook/edit?carId={{ ../car._id }}&logbookId={{ this._id }}"><button class="neu-button">Eintrag ändern</button></a>
   <br>
-  <a href="/myaccount/logbook/delete?carId={{ ../car._id }}&logbookId={{ this._id }}">Eintrag löschen</a>
+  <a href="/myaccount/logbook/delete?carId={{ ../car._id }}&logbookId={{ this._id }}"><button class="neu-button">Eintrag löschen</button></a>
   {{/each}}
   <br><br>
-  <a href="/myaccount/logbook/add/{{ car._id }}">Neue Fahrt</a>
+  <a href="/myaccount/logbook/add/{{ car._id }}"><button class="neu-button">Neue Fahrt</button></a>
 
 </div>
 </section>
@@ -148,12 +148,12 @@
   {{#each car.tankbuch}}
   {{> fuelPartial }}
   <br>
-  <a href="/myaccount/fuelbook/edit?carId={{ ../car._id }}&fuelbookId={{ this._id }}">Eintrag ändern</a>
+  <a href="/myaccount/fuelbook/edit?carId={{ ../car._id }}&fuelbookId={{ this._id }}"><button class="neu-button">Eintrag ändern</button></a>
   <br>
-  <a href="/myaccount/fuelbook/delete?carId={{ ../car._id }}&fuelbookId={{ this._id }}">Eintrag löschen</a>
+  <a href="/myaccount/fuelbook/delete?carId={{ ../car._id }}&fuelbookId={{ this._id }}"><button class="neu-button">Eintrag löschen</button></a>
   {{/each}}
   <br><br>
-  <a href="/myaccount/fuelbook/add/{{ car._id }}">Tanken</a>
+  <a href="/myaccount/fuelbook/add/{{ car._id }}"><button class="neu-button">Tanken</button></a>
 </div>
 </section>
 
@@ -163,12 +163,12 @@
   {{#each car.werkstattbuch}}
   {{> servicePartial }}
   <br>
-  <a href="/myaccount/service/edit?carId={{ ../car._id }}&serviceId={{ this._id }}">Eintrag ändern</a>
+  <a href="/myaccount/service/edit?carId={{ ../car._id }}&serviceId={{ this._id }}"><button class="neu-button">Eintrag ändern</button></a>
   <br>
-  <a href="/myaccount/service/delete?carId={{ ../car._id }}&serviceId={{ this._id }}">Eintrag löschen</a>
+  <a href="/myaccount/service/delete?carId={{ ../car._id }}&serviceId={{ this._id }}"><button class="neu-button">Eintrag löschen</button></a>
   {{/each}}
   <br><br>
-  <a href="/myaccount/service/add/{{ car._id }}">Werkstatt-Rechnung hinzufügen</a>
+  <a href="/myaccount/service/add/{{ car._id }}"><button class="neu-button">Werkstatt-Rechnung hinzufügen</button></a>
 </div>
 </section>
 
@@ -178,12 +178,12 @@
   {{#each car.versicherungsbuch}}
   {{> insurancePartial }}
   <br>
-  <a href="/myaccount/insurance/edit?carId={{ ../car._id }}&insuranceId={{ this._id }}">Eintrag ändern</a>
+  <a href="/myaccount/insurance/edit?carId={{ ../car._id }}&insuranceId={{ this._id }}"><button class="neu-button">Eintrag ändern</button></a>
   <br>
-  <a href="/myaccount/insurance/delete?carId={{ ../car._id }}&insuranceId={{ this._id }}">Eintrag löschen</a>
+  <a href="/myaccount/insurance/delete?carId={{ ../car._id }}&insuranceId={{ this._id }}"><button class="neu-button">Eintrag löschen</button></a>
   {{/each}}
   <br><br>
-  <a href="/myaccount/insurance/add/{{ car._id }}">Versicherung hinzufügen</a>
+  <a href="/myaccount/insurance/add/{{ car._id }}"><button class="neu-button">Versicherung hinzufügen</button></a>
 </div>
 </section>
 
@@ -193,12 +193,12 @@
   {{#each car.steuerbuch}}
   {{> taxPartial }}
   <br>
-  <a href="/myaccount/tax/edit?carId={{ ../car._id }}&taxId={{ this._id }}">Eintrag ändern</a>
+  <a href="/myaccount/tax/edit?carId={{ ../car._id }}&taxId={{ this._id }}"><button class="neu-button">Eintrag ändern</button></a>
   <br>
-  <a href="/myaccount/tax/delete?carId={{ ../car._id }}&taxId={{ this._id }}">Eintrag löschen</a>
+  <a href="/myaccount/tax/delete?carId={{ ../car._id }}&taxId={{ this._id }}"><button class="neu-button">Eintrag löschen</button></a>
   {{/each}}
   <br><br>
-  <a href="/myaccount/tax/add/{{ car._id }}">Steuereintrag hinzufügen</a>
+  <a href="/myaccount/tax/add/{{ car._id }}"><button class="neu-button">Steuereintrag hinzufügen</button></a>
 </div>
 </section>
 

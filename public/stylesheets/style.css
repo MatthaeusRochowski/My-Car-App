@@ -75,7 +75,7 @@ header nav ul a li {
 header nav ul li:hover {
   padding-top: 5px; }
 
-li, .button, .save-button, .add-button, .neu-button, #car-remove-button, #car-edit-button, #update-car-picture, #update-car-details {
+li, .button, .save-button, .add-button, .neu-button, #car-remove-button, #car-edit-button, #update-car-picture, #update-car-details, .car-partial {
   transition: all 300ms;
   -webkit-transition: all 300ms; }
 
@@ -171,12 +171,18 @@ form input {
   border-radius: 5px;
   border: 2px solid;
   border-color: #494949;
-  margin-left: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
   display: flex;
   flex-direction: column;
   padding-left: 10px;
   padding-right: 10px;
-  margin-bottom: 10px; }
+  margin-bottom: 45px; }
+
+.car-partial:hover {
+  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3); }
 
 .p-class {
   display: flex;
@@ -564,5 +570,33 @@ form input {
 #car-edit-fieldset {
   border: none;
   margin-top: 50px; }
+
+/* TABELLE **********************/
+table {
+  border-collapse: collapse;
+  border: 2px solid #2F4F4F;
+  width: 100%; }
+
+th {
+  background-color: #DEB887;
+  color: #494949;
+  padding: 15px;
+  height: 50px;
+  text-align: left;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase; }
+
+td {
+  padding: 15px;
+  height: 30px;
+  vertical-align: middle;
+  text-align: left;
+  font-family: 'Montserrat', sans-serif; }
+
+th, td {
+  border-bottom: 1px solid #ddd; }
+
+tr:hover {
+  background-color: #D3D3D3; }
 
 /*# sourceMappingURL=style.css.map */
