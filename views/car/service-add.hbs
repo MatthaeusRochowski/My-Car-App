@@ -3,7 +3,7 @@
 
 <h2>Werkstatt-Rechnungs-Daten</h2>
 <div>
-  <form action="/myaccount/service/add/{{carId}}" method="POST" id="form-service-add">
+  <form action="/myaccount/service/add/{{carId}}" method="POST" id="form-service-add" enctype="multipart/form-data">
     <div>
       <label for="datum">Datum:</label>
       <input type="text" name="datum" id="datum" value="{{heute}}">
@@ -21,8 +21,8 @@
       <input type="text" name="betrag" id="betrag">
     </div>
     <div>
-      <label for="rechnungs_url">Rechnung:</label>
-      <input type="text" name="rechnungs_url" id="rechnungs_url">
+      <label for="rechnung">Rechnung:</label>
+      <input type="file" name="rechnung" id="rechnung">
     </div>
     <button type="submit">Speichern</button>   
   </form>
