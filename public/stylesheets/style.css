@@ -75,7 +75,9 @@ header nav ul a li {
 header nav ul li:hover {
   padding-top: 5px; }
 
-li, .button, .save-button, .add-button, .neu-button, #car-remove-button, #car-edit-button, #update-car-picture, #update-car-details, .car-partial {
+li, .button, .save-button, .add-button, .neu-button, #car-remove-button,
+#car-edit-button, #update-car-picture, #update-car-details, .car-partial,
+.rechnung-hochladen {
   transition: all 300ms;
   -webkit-transition: all 300ms; }
 
@@ -177,7 +179,7 @@ form input {
   flex-direction: column;
   padding-left: 10px;
   padding-right: 10px;
-  margin-bottom: 45px; }
+  margin-bottom: 50px; }
 
 .car-partial:hover {
   transform: scale(1.1);
@@ -598,5 +600,24 @@ th, td {
 
 tr:hover {
   background-color: #D3D3D3; }
+
+.rechnung-hochladen {
+  margin-top: 2px;
+  margin-right: 50px;
+  margin-left: 50px;
+  background-color: #2F4F4F;
+  color: whitesmoke;
+  border-radius: 5px;
+  border: 2px solid;
+  border-color: #494949;
+  font-size: 15px;
+  width: 200px;
+  height: 50px;
+  text-transform: uppercase;
+  justify-items: center; }
+
+.rechnung-hochladen:hover {
+  background-color: #708090;
+  color: whitesmoke; }
 
 /*# sourceMappingURL=style.css.map */
