@@ -63,7 +63,8 @@ router.post('/login', (req, res, next) => {
           return res.render('/', {errorMessage: "Passwort ist falsch"});
       
       req.session.user = foundUser;
-      res.render('auth/home-main');
+      const fuelAPIKey = process.env.FUEL_API_KEY;
+      res.render('auth/home-main', {fuelAPIKey});
       });
   })
   .catch(err => next (err));
