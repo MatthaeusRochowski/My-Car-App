@@ -324,7 +324,7 @@ router.get("/myaccount/fuelstations", loginCheck(), /*async*/ (req, res, next) =
   let fuelStationResult = {};
 
   //Test mode true: no fuel API is called as the APIkey could be banned; false fuel API is called
-  let testSwitch = true;
+  let testSwitch = false;
 
   outerAPIs.getGeoCoords(plz)
   .then(coords => {
