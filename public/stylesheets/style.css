@@ -678,11 +678,6 @@ form input {
   margin-top: 50px; }
 
 /* TABELLE **********************/
-.versicherung-overview {
-  display: flex;
-  justify-content: center;
-  width: 90%; }
-
 table {
   border-collapse: collapse;
   border: 2px solid #2F4F4F;

@@ -1,25 +1,12 @@
-<table>
-<tr>
-  <th>Datum</th>
-  <th>Kilometerstand</th>
-  <th>Liter</th>
-  <th>Liter Preis</th>
-  <th>Betrag</th>
-</tr>
-<tr>
-  <td>{{ datum }}</td>
-  <td>{{ kilometerstand }}</td>
-  <td>{{ liter }}</td>
-  <td>{{ literpreis }}</td>
-  <td>{{ betrag }}</td>
-</tr>
-</table>
 
-<!--<div class="fuel-partial">
-    <p>Datum: {{ datum }}</p>
-    <p>Kilometerstand: {{ kilometerstand }}</p>
-    <p>Liter: {{ liter }}</p>
-    <p>Liter Preis: {{ literpreis }}</p> 
-    <p>Betrag: {{ betrag }}</p>    
-</div>
--->
+  <tr>
+    <td>{{ datum }}</td>
+    <td>{{ kilometerstand }}</td>
+    <td>{{ liter }}</td>
+    <td>{{ literpreis }}</td>
+    <td>{{ betrag }}</td>
+    <td><a href="/myaccount/fuelbook/edit?carId={{ ../car._id }}&fuelbookId={{ this._id }}"><button
+          class="neu-button">Eintrag ändern</button></a></td>
+    <td><a href="/myaccount/fuelbook/delete?carId={{ ../car._id }}&fuelbookId={{ this._id }}"><button
+          class="neu-button">Eintrag löschen</button></a></td>
+  </tr>

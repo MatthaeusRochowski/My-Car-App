@@ -1,14 +1,3 @@
-<div class="versicherung-overview">
-<table>
-<tr>
-  <th>Versicherungsjahr</th>
-  <th>Name</th>
-  <th>Typ</th>
-  <th>Kilometerstand bei Abschluss:</th>
-  <th>Geschätzte Laufleistung</th>
-  <th>Betrag</th>
-  <th>Schadensfreiheitsklasse</th>
-</tr>
 <tr>
   <td>{{ jahr }}</td>
   <td>{{ name }}</td>
@@ -17,18 +6,8 @@
   <td>{{ geschaetzte_laufleistung }}</td>
   <td>{{ betrag }}</td>
   <td>{{ schadensfreiheitsklasse }}</td>
+  <td><a href="/myaccount/insurance/edit?carId={{ ../car._id }}&insuranceId={{ this._id }}"><button
+        class="neu-button">Eintrag ändern</button></a></td>
+  <td><a href="/myaccount/insurance/delete?carId={{ ../car._id }}&insuranceId={{ this._id }}"><button
+        class="neu-button">Eintrag löschen</button></a></td>
 </tr>
-</table>
-</div>
-
-
-<!--<div class="insurance-partial">
-    <p>Versicherungsjahr: {{ jahr }}</p>
-    <p>Name: {{ name }}</p>
-    <p>Typ: {{ typ }}</p>
-    <p>Kilometerstand bei Abschluss: {{ abschluss_kilometerstand }}</p> 
-    <p>Geschätzte Laufleistung: {{ geschaetzte_laufleistung }}</p>
-    <p>Betrag: {{ betrag }}</p>  
-	<p>Schadensfreiheitsklasse: {{ schadensfreiheitsklasse }}</p>
-</div>
--->
