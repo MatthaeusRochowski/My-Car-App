@@ -145,6 +145,13 @@ router.get("/myaccount/car-details/:id", loginCheck(), (req, res, next) => {
   Car.findById(req.params.id)
     .then(theCar => {
       theCar.save();
+      const carId = theCar._id;
+      theCar.fahrtenbuch.map(eintrag => eintrag.carId = carId);
+      theCar.tankbuch.map(eintrag => eintrag.carId = carId);
+      theCar.werkstattbuch.map(eintrag => eintrag.carId = carId);
+      theCar.versicherungsbuch.map(eintrag => eintrag.carId = carId);
+      theCar.steuerbuch.map(eintrag => eintrag.carId = carId);
+      console.log(theCar);
       res.render("car/car-details", { user: loggedUser, car: theCar });
     });
 });
