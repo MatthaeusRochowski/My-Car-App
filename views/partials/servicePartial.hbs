@@ -1,26 +1,13 @@
-<table>
-<tr>
-  <th>Datum</th>
-  <th>Kilometerstand</th>
-  <th>Posten</th>
-  <th>Betrag</th>
-  <th>Rechnung</th>
-</tr>
-<tr>
-  <td>{{ datum }}</td>
-  <td>{{ kilometerstand }}</td>
-  <td>{{ reparaturposten }}</td>
-  <td>{{ betrag }}</td>
-  <td><a href="{{ rechnungs_url }}"><button class="rechnung-hochladen">Rechnung</button></a></td>
-</tr>
-</table>
 
-
-<!--<div class="service-partial">
-    <p>Datum: {{ datum }}</p>
-    <p>Kilometerstand: {{ kilometerstand }}</p>
-    <p>Posten: {{ reparaturposten }}</p>
-    <p>Betrag: {{ betrag }}</p> 
-    <p><a href="{{ rechnungs_url }}"><button>Rechnung</button></a></p>
-</div>
--->
+  <tr>
+    <td>{{ datum }}</td>
+    <td>{{ kilometerstand }}</td>
+    <td>{{ reparaturposten }}</td>
+    <td>{{ betrag }}</td>
+    <td><a href="{{ rechnungs_url }}"><button class="rechnung-hochladen">Rechnung</button></a></td>
+    <td><a href="/myaccount/service/edit?carId={{ ../car._id }}&serviceId={{ this._id }}"><button
+          class="neu-button">Eintrag
+          ändern</button></a></td>
+    <td><a href="/myaccount/service/delete?carId={{ ../car._id }}&serviceId={{ this._id }}"><button
+          class="neu-button">Eintrag löschen</button></a></td>
+  </tr>

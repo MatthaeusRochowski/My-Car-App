@@ -1,12 +1,3 @@
-<table>
-<tr>
-  <th>Datum</th>
-  <th>Startort</th>
-  <th>Zielort</th>
-  <th>Kilometerstand Start</th>
-  <th>Kilometerstand Ende</th>
-  <th>Strecke Gesamt</th>
-</tr>
 <tr>
   <td>{{ datum }}</td>
   <td>{{ startort }}</td>
@@ -14,14 +5,9 @@
   <td>{{ kilometerstand_start }}</td>
   <td>{{ kilometerstand_ende }}</td>
   <td>{{ strecke_km }}</td>
+  <td><a href="/myaccount/logbook/edit?carId={{ ../car._id }}&logbookId={{ this._id }}"><button
+        class="neu-button">Eintrag ändern</button></a></td>
+  <td><a href="/myaccount/logbook/delete?carId={{ ../car._id }}&logbookId={{ this._id }}"><button
+        class="neu-button">Eintrag löschen</button></a></td>
+  <br>
 </tr>
-</table>
-
-<!--<div>
- <p>Datum: {{ datum }}</p>
- <p>Startort: {{ startort }}</p>
- <p>Zielort: {{ zielort }}</p>
- <p>Kilometerstand Start: {{ kilometerstand_start }}</p>
- <p>Kilometerstand Ende: {{ kilometerstand_ende }}</p>
- <p>Strecke Gesamt (km): {{ strecke_km }}</p>
-</div> -->
