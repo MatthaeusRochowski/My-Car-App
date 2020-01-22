@@ -60,6 +60,14 @@ hr {
   margin: 0 auto 5px auto;
 }
 
+section > hr {
+  height: 1px;
+  width: 100%;
+  background: #494949;
+  border: 0;
+  margin: 0 auto 5px auto;
+}
+
 /* HEADER **********************/
 
 header {
@@ -160,6 +168,23 @@ form input {
 
 #login a:hover {
   opacity: 0.5;
+}
+
+#fuelstationAll {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.fuelstation {
+  width: 15vw;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  border: 2px solid;
+  border-color: #494949;
+  padding: 0px 10px;
+  margin: 10px;
 }
 
 /* SIGNUP **********************/
