@@ -7,23 +7,26 @@
 
         <nav id="main-nav">
             <ul>
-                <a href="/home-main"><li>Home</li></a>
                 <a href="/myaccount"><li>MyAccount</li></a>
-                <a href="/"><li>Logout</li></a>
+                <a href="/logout"><li>Logout</li></a>
             </ul>
         </nav>
     </header>
 
 <!--insurance add form - gets car as input-->
-<h1>Versicherung ändern</h1>
+<h2>Versicherung ändern</h2>
 
-<h2>Versicherungs-Daten</h2>
 <div>
   <form action="/myaccount/insurance/edit?carId={{carId}}&insuranceId={{insurance._id}}" method="POST" id="form-insurance-edit">
+    
+  <div class="name">
     <div>
       <label for="name">Name:</label>
       <input type="text" name="name" id="name" value="{{insurance.name}}">
     </div>
+  </div>
+
+  <div class="typ-jahr">  
     <div>
       <label for="typ">Typ:</label>
       <input type="text" name="typ" id="typ" value="{{insurance.typ}}">
@@ -32,6 +35,9 @@
       <label for="jahr">Jahr:</label>
       <input type="text" name="jahr" id="jahr" value="{{insurance.jahr}}">
     </div>
+  </div>
+
+  <div class="km-laufleistung">
     <div>
       <label for="abschluss_kilometerstand">Abschluss Kilometerstand:</label>
       <input type="text" name="abschluss_kilometerstand" id="abschluss_kilometerstand" value="{{insurance.abschluss_kilometerstand}}">
@@ -40,14 +46,21 @@
       <label for="geschaetzte_laufleistung">Geschätzte Laufleistung:</label>
       <input type="text" name="geschaetzte_laufleistung" id="geschaetzte_laufleistung" value="{{insurance.geschaetzte_laufleistung}}">
     </div>
+  </div>
+  <div class="rechnungsbetrag">
     <div>
       <label for="betrag">Rechnungsbetrag:</label>
       <input type="text" name="betrag" id="betrag" value="{{insurance.betrag}}">
     </div>
+  </div>
+
+  <div class="sfk">
     <div>
       <label for="schadensfreiheitsklasse">Schadensfreiheitsklasse:</label>
       <input type="text" name="schadensfreiheitsklasse" id="schadensfreiheitsklasse" value="{{insurance.schadensfreiheitsklasse}}">
     </div>
-    <button type="submit">Speichern</button>   
+  </div>
+
+    <button type="submit" class="save-button">Speichern</button>   
   </form>
 </div>

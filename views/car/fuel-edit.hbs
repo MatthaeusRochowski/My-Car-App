@@ -7,39 +7,47 @@
 
         <nav id="main-nav">
             <ul>
-                <a href="/home-main"><li>Home</li></a>
                 <a href="/myaccount"><li>MyAccount</li></a>
-                <a href="/"><li>Logout</li></a>
+                <a href="/logout"><li>Logout</li></a>
             </ul>
         </nav>
     </header>
 
 <!--fuel entry edit form - gets car as input-->
-<h1>Eintrag ändern</h1>
+<h2>Eintrag ändern</h2>
 
-<h2>Tankrechnungs-Daten</h2>
 <div>
   <form action="/myaccount/fuelbook/edit?carId={{carId}}&fuelbookId={{fuelbook._id}}" method="POST" id="form-fuelbook-edit">
+  
+  <div class="datum">
     <div>
       <label for="datum">Datum:</label>
-      <input type="text" name="datum" id="datum" value="{{fuelbook.datum}}">
+      <input type="text" name="datum" id="fuel-datum-edit" value="{{fuelbook.datum}}">
     </div>
+   </div> 
+   
+  <div class="km-liter-preis">
     <div>
       <label for="kilometerstand">Kilometerstand:</label>
-      <input type="number" name="kilometerstand" id="kilometerstand" value="{{fuelbook.kilometerstand}}" step="1">
+      <input type="number" name="kilometerstand" id="fuel-kilometerstand-edit" value="{{fuelbook.kilometerstand}}" step="1">
     </div>
     <div>
       <label for="liter">Liter:</label>
-      <input type="number" name="liter" id="liter" value="{{fuelbook.liter}}" step=".01">
+      <input type="number" name="liter" id="fuel-liter-edit" value="{{fuelbook.liter}}" step=".01">
     </div>
     <div>
       <label for="literpreis">Literpreis:</label>
-      <input type="number" name="literpreis" id="literpreis" value="{{fuelbook.literpreis}}" step=".01">
+      <input type="number" name="literpreis" id="fuel-literpreis-edit" value="{{fuelbook.literpreis}}" step=".01">
     </div>
+  </div> 
+
+  <div class="betrag-fuel-edit">
     <div>
       <label for="betrag">Summe:</label>
-      <input type="number" name="betrag" id="betrag" value="{{fuelbook.betrag}}" step=".01">
+      <input type="number" name="betrag" id="fuel-betrag-edit" value="{{fuelbook.betrag}}" step=".01">
     </div>
-    <button type="submit">Speichern</button>   
+  </div>
+
+    <button type="submit" class="save-button">Speichern</button>   
   </form>
 </div>

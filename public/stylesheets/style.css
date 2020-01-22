@@ -40,7 +40,7 @@ h2 {
   margin-top: 0; }
 
 h4, p {
-  font-family: 'Montserrat', serif;
+  font-family: 'Montserrat', sans-serif;
   color: #494949; }
 
 hr {
@@ -82,7 +82,9 @@ header nav ul a li {
 header nav ul li:hover {
   padding-top: 5px; }
 
-li, .button, .save-button, .add-button, .neu-button, #car-remove-button, #car-edit-button, #update-car-picture, #update-car-details {
+li, .button, .save-button, .add-button, .neu-button, #car-remove-button,
+#car-edit-button, #update-car-picture, #update-car-details, .car-partial,
+.rechnung-hochladen, .fuelstation {
   transition: all 300ms;
   -webkit-transition: all 300ms; }
 
@@ -97,13 +99,8 @@ li, .button, .save-button, .add-button, .neu-button, #car-remove-button, #car-ed
 #logo:hover {
   opacity: 0.5; }
 
-/* ABOUT **********************/
-#about {
-  background: AliceBlue; }
-
 /* LOGIN **********************/
 #login {
-  background: AliceBlue;
   font-family: 'Montserrat', serif; }
 
 form input {
@@ -154,12 +151,14 @@ form input {
   border: 2px solid;
   border-color: #494949;
   padding: 0px 10px;
-  margin: 10px; }
+  margin: 20px; }
+
+.fuelstation:hover {
+  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3); }
 
 /* SIGNUP **********************/
-#signup {
-  background: AliceBlue; }
-
 #signup a {
   margin-top: 20px;
   color: whitesmoke;
@@ -193,12 +192,18 @@ form input {
   border-radius: 5px;
   border: 2px solid;
   border-color: #494949;
-  margin-left: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
   display: flex;
   flex-direction: column;
   padding-left: 10px;
   padding-right: 10px;
-  margin-bottom: 10px; }
+  margin-bottom: 50px; }
+
+.car-partial:hover {
+  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3); }
 
 .p-class {
   display: flex;
@@ -340,27 +345,60 @@ form input {
   color: whitesmoke; }
 
 /* FUEL **********************/
-#datum {
+#form-fuel-add input {
+  height: 30px; }
+
+#form-fuelbook-edit input {
+  height: 30px; }
+
+#datum-fuel-add {
+  width: 120px; }
+
+#fuel-datum-edit {
   width: 120px;
   margin-left: 10px; }
+
+.km-liter-preis {
+  display: flex;
+  margin-left: 10px;
+  align-items: flex-start; }
 
 #kilometerstand {
   width: 120px;
   margin-right: 10px;
   margin-left: 10px; }
 
-.litergroup {
-  display: flex;
-  margin-left: 10px;
-  align-items: flex-start; }
+#fuel-kilometerstand-edit {
+  width: 120px;
+  margin-right: 10px;
+  margin-left: 10px; }
 
 #liter {
   width: 70px;
   margin-right: 10px; }
 
-#literpreis {
+#fuel-liter-edit {
   width: 70px;
   margin-right: 10px; }
+
+#literpreis {
+  width: 70px; }
+
+#fuel-literpreis-edit {
+  width: 70px; }
+
+#fuel-betrag-edit {
+  width: 200px; }
+
+.betrag-fuel-add {
+  display: flex;
+  margin-left: 10px;
+  align-items: flex-start; }
+
+.betrag-fuel-edit {
+  display: flex;
+  margin-left: 10px;
+  align-items: flex-start; }
 
 /* INSURANCE **********************/
 #name {
@@ -414,14 +452,31 @@ form input {
 #form-insurance-add input {
   height: 30px; }
 
+#form-insurance-edit input {
+  height: 30px; }
+
 /* LOGBOOK **********************/
 #form-log-add input {
+  height: 30px; }
+
+#form-logbook-edit input {
   height: 30px; }
 
 .datum {
   display: flex;
   margin-left: 10px;
   align-items: flex-start; }
+
+#datum {
+  width: 120px; }
+
+#datum-edit {
+  width: 120px; }
+
+#strecke_km-edit {
+  width: 120px;
+  margin-left: 10px;
+  margin-right: 10px; }
 
 .start-end {
   display: flex;
@@ -437,18 +492,35 @@ form input {
   width: 200px;
   margin-right: 10px; }
 
+#startort-edit {
+  width: 200px;
+  margin-right: 10px; }
+
 #zielort {
+  width: 200px; }
+
+#zielort-edit {
   width: 200px; }
 
 #kilometerstand_start {
   width: 120px;
   margin-right: 10px; }
 
+#kilometerstand_start-edit {
+  width: 120px;
+  margin-right: 10px; }
+
 #kilometerstand_ende {
+  width: 120px; }
+
+#kilometerstand_ende-edit {
   width: 120px; }
 
 /* SERVICE **********************/
 #form-service-add input {
+  height: 30px; }
+
+#form-service-edit input {
   height: 30px; }
 
 .km-reparatur {
@@ -470,14 +542,32 @@ form input {
   float: left;
   margin-left: 10px; }
 
+#form-service-edit li {
+  float: left;
+  margin-left: 10px; }
+
 /* TAX **********************/
 #form-tax-add input {
+  height: 30px; }
+
+#form-tax-edit input {
   height: 30px; }
 
 .tax-group {
   display: flex;
   margin-left: 10px;
   align-items: flex-start; }
+
+#typ-add {
+  width: 70px;
+  margin-right: 10px; }
+
+#jahr-add {
+  width: 70px;
+  margin-right: 10px; }
+
+#betrag-add {
+  width: 200px; }
 
 /* CARDETAILS **********************/
 #car-remove-button {
@@ -586,5 +676,73 @@ form input {
 #car-edit-fieldset {
   border: none;
   margin-top: 50px; }
+
+/* TABELLE **********************/
+.versicherung-overview {
+  display: flex;
+  justify-content: center;
+  width: 90%; }
+
+table {
+  border-collapse: collapse;
+  border: 2px solid #2F4F4F;
+  width: 100%; }
+
+th {
+  background-color: #DEB887;
+  color: #494949;
+  padding: 15px;
+  height: 50px;
+  text-align: left;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase; }
+
+td {
+  padding: 15px;
+  height: 30px;
+  vertical-align: middle;
+  text-align: left;
+  font-family: 'Montserrat', sans-serif; }
+
+th, td {
+  border-bottom: 1px solid #ddd; }
+
+tr:hover {
+  background-color: #D3D3D3; }
+
+.rechnung-hochladen {
+  margin-top: 2px;
+  margin-right: 50px;
+  margin-left: 50px;
+  background-color: #2F4F4F;
+  color: whitesmoke;
+  border-radius: 5px;
+  border: 2px solid;
+  border-color: #494949;
+  font-size: 15px;
+  width: 200px;
+  height: 50px;
+  text-transform: uppercase;
+  justify-items: center; }
+
+.rechnung-hochladen:hover {
+  background-color: #708090;
+  color: whitesmoke; }
+
+/* MAIN **********************/
+#desc_section {
+  display: flex;
+  justify-content: center; }
+
+#description {
+  font-family: 'Montserrat', sans-serif;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left; }
+
+#description h1 {
+  text-align: center; }
 
 /*# sourceMappingURL=style.css.map */
