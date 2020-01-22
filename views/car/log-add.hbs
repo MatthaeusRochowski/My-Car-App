@@ -1,12 +1,33 @@
+<!--- NAVBAR -->
+
+<header>
+        <div id="logo">
+                <a href="/home-main"><li>MyCarApp</li></a>
+        </div>
+
+        <nav id="main-nav">
+            <ul>
+                <a href="/home-main"><li>Home</li></a>
+                <a href="/myaccount"><li>MyAccount</li></a>
+                <a href="/"><li>Logout</li></a>
+            </ul>
+        </nav>
+    </header>
+
 <!--add log in logbook - gets car as input-->
-<h1>Neue Fahrt eintragen</h1>
+<h2>Neue Fahrt eintragen</h2>
 
 <div>
   <form action="/myaccount/logbook/add/{{ carId }}" method="POST" id="form-log-add">
+
+  <div class="datum">
     <div>
       <label for="datum">Datum:</label>
       <input type="text" name="datum" id="datum" value={{ heute }}>
     </div>
+  </div> 
+
+  <div class="start-end">
     <div>
       <label for="startort">Startort:</label>
       <input type="text" name="startort" id="startort">
@@ -15,6 +36,9 @@
       <label for="zielort">Zielort:</label>
       <input type="text" name="zielort" id="zielort">
     </div>
+  </div> 
+
+  <div class="kmstart-kmend">
     <div>
       <label for="kilometerstand_start">Kilometerstand Start:</label>
       <input type="number" name="kilometerstand_start" id="kilometerstand_start" value={{ kilometerstand_start }}>
@@ -23,7 +47,8 @@
       <label for="kilometerstand_ende">Kilometerstand Ende:</label>
       <input type="number" name="kilometerstand_ende" id="kilometerstand_ende">
     </div>
-    <button type="submit">Speichern</button>   
+  </div>  
+    <button type="submit" class="save-button">Speichern</button>   
   </form>
 </div>
 

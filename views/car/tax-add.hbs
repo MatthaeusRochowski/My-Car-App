@@ -1,9 +1,28 @@
-<!--insurance add form - gets car as input-->
-<h1>KFZ-Steuer hinzufügen</h1>
+<!--- NAVBAR -->
 
-<h2>KFZ-Steuer-Daten</h2>
+<header>
+        <div id="logo">
+                <a href="/home-main"><li>MyCarApp</li></a>
+        </div>
+
+        <nav id="main-nav">
+            <ul>
+                <a href="/home-main"><li>Home</li></a>
+                <a href="/myaccount"><li>MyAccount</li></a>
+                <a href="/"><li>Logout</li></a>
+            </ul>
+        </nav>
+    </header>
+
+<!--insurance add form - gets car as input-->
+
+<section>
+<h2>KFZ-Steuer hinzufügen</h2>
+
 <div>
   <form action="/myaccount/tax/add/{{carId}}" method="POST" id="form-tax-add">
+
+  <div class="tax-group">
     <div>
       <label for="typ">Typ:</label>
       <input type="text" name="typ" id="typ">
@@ -16,6 +35,8 @@
       <label for="betrag">Rechnungsbetrag:</label>
       <input type="text" name="betrag" id="betrag">
     </div>
-    <button type="submit">Speichern</button>   
+  </div>  
+    <button type="submit" class="save-button">Speichern</button>   
   </form>
 </div>
+</section>

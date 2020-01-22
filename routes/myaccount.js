@@ -225,30 +225,71 @@ router.post("/car-add", [uploadCloud.single("autobild"), loginCheck()], (req, re
 
 //Edit Car Details
 /* prefixed with /myaccount in app.js*/
-router.post("/edit/:carId", [uploadCloud.single("autobild"), loginCheck()], (req, res, next) => {
+router.post("/edit/:carId", loginCheck(), (req, res, next) => {
   const carId = req.params.carId;
 
-  let bild;
-  if (req.file) bild = req.file.url;
-  //console.log('neues Autobild 1', bild);
+  const {
+    kennzeichen,
+    hersteller,
+    modell,
+    hsn,
+    tsn,
+    kraftstoff,
+    leistung_ps,
+    erstzulassung_monat,
+    erstzulassung_jahr,
+    kaufpreis,
+    kilometerstand_kauf,
+    kilometerstand_aktuell
+  } = req.body;
 
-  const { kennzeichen, hersteller, modell, hsn, tsn, kraftstoff, 
-    leistung_ps, erstzulassung_monat, erstzulassung_jahr, kauf_jahr, kaufpreis, 
-    kilometerstand_kauf, kilometerstand_aktuell } = req.body;
+  const updatedCarDetails = {
+    kennzeichen,
+    hersteller,
+    modell,
+    hsn,
+    tsn,
+    kraftstoff,
+    leistung_ps,
+    erstzulassung_monat,
+    erstzulassung_jahr,
+    kaufpreis,
+    kilometerstand_kauf,
+    kilometerstand_aktuell
+  };
 
-  const updatedCarDetails = { kennzeichen, hersteller, modell, hsn, tsn, kraftstoff, 
-    leistung_ps, erstzulassung_monat, erstzulassung_jahr, kauf_jahr, kaufpreis, 
-    kilometerstand_kauf, kilometerstand_aktuell, bild };
-
-  Car.findByIdAndUpdate(carId, updatedCarDetails )
+  Car.findByIdAndUpdate(carId, updatedCarDetails)
     .then(() => {
-      //console.log('neues Autobild ', bild);
       res.redirect(`/myaccount/car-details/${carId}`);
     })
     .catch(err => {
       next(err);
     });
 });
+
+//Change car picture
+router.post(
+  "/newpicture/:carId",
+  [uploadCloud.single("autobild"), loginCheck()],
+  (req, res, next) => {
+    const carId = req.params.carId;
+    console.log("inside newpicture route");
+
+    const updatedCarDetails = {
+      bild: req.file.url
+    };
+
+    console.log("Mein Autobild ", updatedCarDetails);
+    
+    Car.findByIdAndUpdate(carId, updatedCarDetails)
+      .then(() => {
+        res.redirect(`/myaccount/car-details/${carId}`);
+      })
+      .catch(err => {
+        next(err);
+      });
+  }
+);
 
 // Delete a car from database
 router.post("/remove/:carId", loginCheck(), (req, res, next) => {

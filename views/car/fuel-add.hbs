@@ -1,5 +1,23 @@
+<!--- NAVBAR -->
+
+<header>
+        <div id="logo">
+                <a href="/home-main"><li>MyCarApp</li></a>
+        </div>
+
+        <nav id="main-nav">
+            <ul>
+                <a href="/home-main"><li>Home</li></a>
+                <a href="/myaccount"><li>MyAccount</li></a>
+                <a href="/"><li>Logout</li></a>
+            </ul>
+        </nav>
+    </header>
+
 <!--add fuel - gets car as input-->
-<h1>Tanken hinzufügen</h1>
+
+<section>
+<h2>Tanken hinzufügen</h2>
 
 <div>
   <form action="/myaccount/fuelbook/add/{{ carId }}" method="POST" id="form-fuel-add">
@@ -11,6 +29,8 @@
       <label for="kilometerstand">Kilometerstand:</label>
       <input type="text" name="kilometerstand" id="kilometerstand" value={{ kilometerstand }}>
     </div>
+
+  <div class="litergroup">
     <div>
       <label for="liter">Liter:</label>
       <input type="text" name="liter" id="liter">
@@ -19,10 +39,13 @@
       <label for="literpreis">Liter Preis:</label>
       <input type="text" name="literpreis" id="literpreis">
     </div>
+  </div> 
+    
     <div>
       <label for="betrag">Betrag:</label>
       <input type="number" name="betrag" id="betrag">
     </div>
-    <button type="submit">Speichern</button>   
+    <button type="submit" class="save-button">Speichern</button>   
   </form>
 </div>
+</section>

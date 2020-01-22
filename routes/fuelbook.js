@@ -22,7 +22,7 @@ router.get('/add/:carId', loginCheck(), (req, res, next) => {
   
   Car.findById({ _id: mongoose.Types.ObjectId(carId) })
   .then(foundCar => {
-    let kilometerstand = foundCar.fahrtenbuch[0].kilometerstand_start;
+    let kilometerstand = foundCar.kilometerstand_aktuell;
     res.render('car/fuel-add', { user: loggedUser, carId: carId, heute: heute, kilometerstand: kilometerstand} );
   });
 });
