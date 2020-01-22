@@ -8,37 +8,64 @@
 
     <nav id="main-nav">
         <ul>
-            <a href="/home-main">
-                <li>About</li>
-            </a>
-            <a href="/home-main">
-                <li>Contact</li>
+            <a href="#fuel">
+                <li>Fuel Prices</li>
             </a>
             <a href="/myaccount">
                 <li>MyAccount</li>
             </a>
-            <a href="/">
+            <a href="/logout">
                 <li>Logout</li>
             </a>
         </ul>
     </nav>
 </header>
 
-<section>
-    <hr>
-    <div>
+<hr>
+<section id="desc_section">
+    <div id="description">
         <h1>Beschreibung My-Car-App</h1>
+        <p>
+            Die App erlaubt die Pflege eines Account-spezifischen Fuhrparks. Erfasst werden können Autos (inkl. Bild),
+            deren gefahrene Strecken, Tankrechnungen, Werkstattrechnungen (incl. Beleg), Versicherungskosten und
+            KFZ-Steuern. Errechnet werden die Kosten pro Kilometer und Fahrzeug (siehe Beschreibung Wertverlust
+            unterhalb). Der Nutzer muss nach eingehender Registrierung eingeloggt sein um die Funktionen der App (vie
+            WebBrowser) nutzen zu können.
+            Zusätzlich können Spritpreise im Umkreis abgerufen werden.
+            <br>
+            <h4>Berechung Wertverlust allgemein:</h4>
+            <ul>
+                <li><b>berücksichtigte Werte:</b></li>
+                <li>Streckenbuch (erfasste, gefahrene Distanzen)</li>
+                <li>Tankbuch (erfasste Tankrechnungen)</li>
+                <li>Werkstattbuch (erfasste Werkstattrechnungen)</li>
+                <li>Versicherungsbuch (erfasste Versicherungsverträge)</li>
+                <li>Steuerbuch (erfasste KFZ-Steuerabgaben)</li>
+                <li>Fahrzeug Wertverlust nach Fahrzeugalter (Faustformel) und Kilometerstand (Faustformel) <br>
+                    >> der höhere Wertverlust beider Werte wird in der Rechung genutzt</li>
+            </ul>
+            <br>
+            <h4>Berechung Wertverlust Fahrzeug:</h4>
+            <ul>
+                <li><b>Wertverlust nach Fahrzeugalter:</b></li>
+                <li>Nutzung eines dedizierten Referenzarrays (Bestimmung nach Alter)</li>
+                <li>Wenn das Fahrzeugalter nicht mehr durch die Referenztabelle abgedeckt wäre wird der maximale
+                    Wertverlust genutzt</li>
+                <li>Die Differenz aus Fahrzeugalter und Fahrzeugbesitz bestimmt den Wertverfall für den Kaufpreis</li><br>
+                <li><b>Wertverlust nach Kilometerstand</b></li>
+                <li>Nutzung eines dedizierten Referenzarrays (Bestimmung auch hier nach Alter)</li>
+                <li>Wenn das Fahrzeugalter nicht mehr durch die Referenztabelle abgedeckt wäre wird der maximale
+                    Wertverlust genutzt</li>
+                <li>Wenn die tatsächlich gefahrenen Strecken die angenommen 15k / Jahr unterschreiten (bzw.
+                    überschreiten) wird ein Faktor bestimmt</li>
+                <li>Die Differenz aus Fahrzeugalter und Fahrzeugbesitz bestimmt den Wertverfall für den Kaufpreis
+                    (modifiziert durch den Faktor)</li>
+            </ul>
+        </p>
     </div>
 </section>
 
-<section>
-    <hr>
-    <div>
-        <h1>Kostenübersich Favorit</h1>
-    </div>
-</section>
-
-<section>
+<section id="fuel">
     <hr>
     <div>
         <h1>Tankstellen- / Spritpreis-Abfrage</h1>
@@ -55,12 +82,12 @@
                 <label for="breitengrad">Breitengrad:</label>
                 <input type="text" name="breitengrad" id="breitengrad" value="{{longitude}}" readonly>
             </div-->
-            <button type="submit">Abschicken</button>
+            <button type="submit" class="neu-button">Abschicken</button>
         </form>
         <div id="fuelstationAll">
             {{#each fuelStationResult.stations}}
             <div class="fuelstation">
-                <p><b>Tankstelle:</b><br/> {{this.brand}} {{this.street}}<br/> ({{this.place}})</p>
+                <p><b>Tankstelle:</b><br /> {{this.brand}} {{this.street}}<br /> ({{this.place}})</p>
                 <p><b>Entfernung (km):</b> {{this.dist}}</p>
                 <p><b>Benzin (E5):</b> {{this.e5}}</p>
                 <p><b>Benzin (E10):</b> {{this.e10}}</p>

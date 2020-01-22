@@ -7,23 +7,26 @@
 
         <nav id="main-nav">
             <ul>
-                <a href="/home-main"><li>Home</li></a>
                 <a href="/myaccount"><li>MyAccount</li></a>
-                <a href="/"><li>Logout</li></a>
+                <a href="/logout"><li>Logout</li></a>
             </ul>
         </nav>
     </header>
 
 <!--service add form - gets car as input-->
-<h1>Werkstatt-Rechnung ändern</h1>
+<h2>Werkstatt-Rechnung ändern</h2>
 
-<h2>Werkstatt-Rechnungs-Daten</h2>
 <div>
   <form action="/myaccount/service/edit?carId={{carId}}&serviceId={{service._id}}" method="POST" id="form-service-edit"  enctype="multipart/form-data">
+    
+  <div class="datum">
     <div>
       <label for="datum">Datum:</label>
       <input type="text" name="datum" id="datum" value="{{service.datum}}">
     </div>
+  </div>
+
+    <div class="km-reparatur">
     <div>
       <label for="kilometerstand">Kilometerstand:</label>
       <input type="text" name="kilometerstand" id="kilometerstand" value="{{service.kilometerstand}}">
@@ -32,14 +35,22 @@
       <label for="reparaturposten">Reparaturposten:</label>
       <input type="text" name="reparaturposten" id="reparaturposten" value="{{service.reparaturposten}}">
     </div>
+    </div>
+
+  <div class="betrag">
     <div>
       <label for="betrag">Rechnungsbetrag:</label>
       <input type="text" name="betrag" id="betrag" value="{{service.betrag}}">
     </div>
-    <div>
-      <label for="rechnung">Rechnung:</label>
+  </div>
+
+    <li>Rechnung hochladen:</li><br>
+    <div class="rechnung">
+      <div>
       <input type="file" name="rechnung" id="rechnung" value="{{service.rechnungs_url}}">
+      </div>
     </div>
-    <button type="submit">Speichern</button>   
+
+    <button type="submit" class="save-button">Speichern</button>   
   </form>
 </div>

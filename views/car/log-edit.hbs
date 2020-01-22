@@ -7,43 +7,51 @@
 
         <nav id="main-nav">
             <ul>
-                <a href="/home-main"><li>Home</li></a>
                 <a href="/myaccount"><li>MyAccount</li></a>
-                <a href="/"><li>Logout</li></a>
+                <a href="/logout"><li>Logout</li></a>
             </ul>
         </nav>
     </header>
 
 <!--logbook edit form - gets car as input-->
-<h1>Eintrag ändern</h1>
+<h2>Eintrag ändern</h2>
 
-<h2>Strecken-Daten:</h2>
 <div>
   <form action="/myaccount/logbook/edit?carId={{carId}}&logbookId={{logbook._id}}" method="POST" id="form-logbook-edit">
+  
+  <div class="datum">
     <div>
       <label for="datum">Datum:</label>
-      <input type="text" name="datum" id="datum" value="{{logbook.datum}}">
+      <input type="text" name="datum" id="datum-edit" value="{{logbook.datum}}">
     </div>
+  </div>
+
+  <div class="start-end">
     <div>
       <label for="strecke_km">Strecke (km):</label>
-      <input type="number" name="strecke_km" id="strecke_km" value="{{logbook.strecke_km}}">
+      <input type="number" name="strecke_km" id="strecke_km-edit" value="{{logbook.strecke_km}}">
     </div>
     <div>
       <label for="startort">Start-Ort:</label>
-      <input type="text" name="startort" id="startort" value="{{logbook.startort}}">
+      <input type="text" name="startort" id="startort-edit" value="{{logbook.startort}}">
     </div>
     <div>
       <label for="zielort">Ziel-Ort:</label>
-      <input type="text" name="zielort" id="zielort" value="{{logbook.zielort}}">
+      <input type="text" name="zielort" id="zielort-edit" value="{{logbook.zielort}}">
     </div>
+   </div>
+
+  <div class="kmstart-kmend">
     <div>
       <label for="kilometerstand_start">Kilometerstand-Start:</label>
-      <input type="number" name="kilometerstand_start" id="kilometerstand_start" value="{{logbook.kilometerstand_start}}">
+      <input type="number" name="kilometerstand_start" id="kilometerstand_start-edit" value="{{logbook.kilometerstand_start}}">
     </div>
     <div>
       <label for="kilometerstand_ende">Kilometerstand-Ende:</label>
-      <input type="number" name="kilometerstand_ende" id="kilometerstand_ende" value="{{logbook.kilometerstand_ende}}">
+      <input type="number" name="kilometerstand_ende" id="kilometerstand_ende-edit" value="{{logbook.kilometerstand_ende}}">
     </div>
-    <button type="submit">Speichern</button>   
+  </div>
+  
+    <button type="submit" class="save-button">Speichern</button>   
   </form>
 </div>

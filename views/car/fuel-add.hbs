@@ -7,9 +7,8 @@
 
         <nav id="main-nav">
             <ul>
-                <a href="/home-main"><li>Home</li></a>
                 <a href="/myaccount"><li>MyAccount</li></a>
-                <a href="/"><li>Logout</li></a>
+                <a href="/logout"><li>Logout</li></a>
             </ul>
         </nav>
     </header>
@@ -21,16 +20,19 @@
 
 <div>
   <form action="/myaccount/fuelbook/add/{{ carId }}" method="POST" id="form-fuel-add">
+
+  <div class="datum">
     <div>
       <label for="datum">Datum:</label>
-      <input type="text" name="datum" id="datum" value={{ heute }}>
+      <input type="text" name="datum" id="datum-fuel-add" value={{ heute }}>
     </div>
+   </div>
+
+   <div class="km-liter-preis">
     <div>
       <label for="kilometerstand">Kilometerstand:</label>
       <input type="text" name="kilometerstand" id="kilometerstand" value={{ kilometerstand }}>
     </div>
-
-  <div class="litergroup">
     <div>
       <label for="liter">Liter:</label>
       <input type="text" name="liter" id="liter">
@@ -40,11 +42,14 @@
       <input type="text" name="literpreis" id="literpreis">
     </div>
   </div> 
+  
     
+  <div class="betrag-fuel-add">  
     <div>
       <label for="betrag">Betrag:</label>
       <input type="number" name="betrag" id="betrag">
     </div>
+  </div>   
     <button type="submit" class="save-button">Speichern</button>   
   </form>
 </div>

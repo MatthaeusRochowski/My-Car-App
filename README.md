@@ -1,5 +1,6 @@
 # My-Car-App
 Die App erlaubt die Pflege eines Account-spezifischen Fuhrparks. Erfasst werden können Autos (inkl. Bild), deren gefahrene Strecken, Tankrechnungen, Werkstattrechnungen (incl. Beleg), Versicherungskosten und KFZ-Steuern. Errechnet werden die Kosten pro Kilometer und Fahrzeug (siehe Beschreibung Wertverlust unterhalb). Der Nutzer muss nach eingehender Registrierung eingeloggt sein um die Funktionen der App (vie WebBrowser) nutzen zu können. 
+Zusätzlich können Spritpreise im Umkreis abgerufen werden.
 
 *Berechung Wertverlust allgemein:*
 - berücksichtigte Werte:
